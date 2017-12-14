@@ -1,0 +1,490 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+    
+
+<html lang="es"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<link rel="icon" type="image/png" href="imagenes/icon.png"/>
+
+    <title>Home Cliente | Service Express</title>
+    
+    <meta name="viewport" content="width=device-width" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    
+    
+    <!-- Bootstrap core CSS     -->
+    <link href="mdCliente/css/bootstrap.min.css" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href="mdCliente/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="mdCliente/css/demo.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'/>
+  	<style>
+  		
+		.ui-growl {
+			
+			padding-top:80px;
+				right:30px;
+		
+		}
+	</style>
+	
+	
+
+
+<!-- Para mostra alertas de alertify -->
+      <link rel="stylesheet" href="alertify/themes/alertify.core.css" />
+	<link rel="stylesheet" href="alertify/themes/alertify.default.css" id="toggleCSS" />
+	
+	<style>
+		.alertify-log-custom {
+			background: blue;
+			
+		}
+	</style>
+	
+
+
+
+</h:head>
+
+<h:body>
+
+ <div class="wrapper">
+        <div class="sidebar" data-color="blue" data-image="../assets/img/sidebar-1.jpg" >
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Service Express
+                </a>
+            </div>
+         
+           <h:form>
+           
+            <div class="sidebar-wrapper"  >
+                <ul class="nav" >
+                    
+                    <li >
+                       
+                          <p:commandLink action="#{pedidoJSF.redirectHome}">
+                            <i class="material-icons">dashboard</i>
+                            <p>Registro de Pedido</p>
+                            
+                        </p:commandLink>
+                    </li>
+                    
+                   
+                   
+                    <li >
+                           
+                        <p:commandLink action="#{pedidoJSF.cargarSeguimientoA}">
+                            <i class="material-icons">person</i>
+                            <p>Seguimiento</p>
+<!--                             	<f:setPropertyActionListener value="bluesky" target="#{cambiadorTemas.tema}"/>  -->
+                       	</p:commandLink>
+                    </li>
+                  
+                     <li>
+                        <p:commandLink action="#{pedidoJSF.cargarHistorialA}">
+                            <i class="material-icons">content_paste</i>
+                            <p>Historia</p>
+                        </p:commandLink>
+                    </li>
+                  
+                    <li>
+                        <a href="ClientePago.xhtml">
+                            <i class="material-icons">attach_money</i>
+                            <p>Medio de Pago</p>
+                        </a>
+                    </li>
+                    
+                    <li>
+                    	<p:commandLink action="#{clienteJSF.cargarPerfil}">
+                            <i class="material-icons">person</i>
+                            <p>Mi Perfil</p>
+                        </p:commandLink>
+                    </li>
+                   
+                     
+                </ul>
+            </div>
+       
+      	 	</h:form>
+        </div>
+        
+        <div class="main-panel">
+        
+                    	
+            <div >        	
+	            <div class="navbar navbar-transparent navbar-fixed" style="background-color: #fff;height: 70px">
+	                
+	                <div class="container-fluid" >
+		               <div class="navbar-header">
+		                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+		                            <span class="sr-only">Toggle navigation</span>
+		                            <span class="icon-bar"></span>
+		                            <span class="icon-bar"></span>
+		                            <span class="icon-bar"></span>
+		                        </button>
+		                       
+		                 </div>
+	                    <div class="collapse navbar-collapse ">
+	                        <ul class="nav navbar-nav navbar-left ">
+	                            <li>
+	                                    <i class="" style="color:purple ">
+	                                    	
+	                                  	  <h3> Bienvenido,  #{clienteJSF.saludos}   <span> </span> <p:outputLabel value="#{clienteSessionA['nombre']}"/><span> </span>  <p:outputLabel value="#{clienteSessionA['apellido']}"/>  
+	                                  	
+	                                  	 </h3>
+	                                  	  
+	                                    </i>
+	                            </li>
+	                        </ul>
+	                        
+	                        
+	                        
+	                    
+	                        
+	                        
+	                        
+	                        <ul class="nav navbar-nav navbar-right">
+	                           
+	                           
+	                           
+	                          
+	                            <li>
+	                                <a href="HomeCliente.xhtml" >
+	                                    <i class="material-icons btn-white btn btn-round btn-just-icon">dashboard</i>
+	                                    <p class="hidden-lg hidden-md">Dashboard</p>
+	                                </a>
+	                            </li>
+	                            
+	                          
+	                             
+	                            
+		                      
+		                           
+	                         
+	                                  	
+	                               <li class="dropdown">
+	                                <a href="#" class="dropdown-toggle " data-toggle="dropdown">
+	                                    <i class="material-icons btn-white btn btn-round btn-just-icon">person</i>
+	                                    <p class="hidden-lg hidden-md">Profile</p>
+	                                </a>
+		                              
+		                                        <h:form >
+	                           
+		                                <ul class="dropdown-menu">
+		                                  
+		                                    <li>
+		                                  		<p:commandLink action="#{clienteJSF.cargarPerfil}">
+				                                	 <span class="mdl-list__item-primary-content">
+								                        <i class="material-icons mdl-list__item-icon">account_circle</i>
+								                       Mi Perfil
+								                    </span>
+		                               			 </p:commandLink>
+		                                
+		                                    </li>
+		                                    <li>
+		                                        <a href="#">
+		                                        	 <span class="mdl-list__item-primary-content">
+								                        <i class="material-icons mdl-list__item-icon">check_box</i>
+								                        My tasks
+								                    </span>
+								                    <span class="mdl-list__item-secondary-content">
+								                      <span class="label background-color--primary">3 new</span>
+								                    </span>
+		                                        </a>
+		                                    </li>
+		                                    <li>
+		                                        <a href="#">
+		                                        	<span class="mdl-list__item-primary-content">
+								                        <i class="material-icons mdl-list__item-icon">settings</i>
+								                        Settings
+								                    </span>
+		                                        </a>
+		                                    </li>
+		                                 
+		                                   <li>
+		                                        <p:commandLink action="#{clienteJSF.cerrarSesion}">
+		                                        	<span class="mdl-list__item-primary-content">
+								                        <i class="material-icons mdl-list__item-icon">exit_to_app</i>
+								                        Logout
+								                    </span>
+		                                        </p:commandLink>
+		                                    </li>
+		                                 
+		                                </ul>
+		                       
+	                           </h:form>
+	                            </li>
+	                           
+	                          
+										
+	                           
+	                            
+	                            
+	                        </ul>
+	                       
+	                                                
+	    
+	                    </div>
+	                
+	    
+	                </div>
+	                
+	    
+	            </div>
+	            
+            
+            </div>
+            
+            
+            
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+	                  
+	                  
+	                    <div class="col-lg-12 col-md-12">
+                            <div class="card">
+                                <div class="card-header" data-background-color="orange">
+                                    <h4 class="title">Detalle de Solicitud de Solicitud de Pedido</h4>
+                                    <p class="category">Vista previa del registro del servicio</p>
+                                </div>
+                             	 <div class="card-content">
+                 
+	                  
+				                  	<table class="table table-hover">
+				                  		
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel> Remitente </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.remitente} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Direccion Remitente </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.direccion_ini} <span> </span><strong> #{pedidoJSF.pedido.distrito1.descripcion}</strong> </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Celular Remitente </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.celular1} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		
+				                  		
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Nombre Receptor </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.receptor} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Direccion Receptor </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.direccion_fin} <span> </span><strong> #{pedidoJSF.pedido.distrito2.descripcion}</strong> </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Celular Receptor </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.celular2} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Instrucciones de Envio </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.instrucciones} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Paquete pequeño </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.documento_peq} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Paquete Mediano </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.documento_med} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Paquete Grande </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.documento_gra} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Distancia para la entrega </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.kilometros} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Tiempo de entrega </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.tiempo} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Costo de servicio </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.precio} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Medio de pago </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.pago} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		<tr>
+				                  			<td>
+				                  				<p:outputLabel>Monto efectivo </p:outputLabel>
+				                  			</td>
+				                  			<td>
+				                  				<p:outputLabel>#{pedidoJSF.pedido.soles} </p:outputLabel>
+				                  			</td>
+				                  			
+				                  		</tr>
+				                  		
+				                  	
+				                  	
+				                  	</table>
+			               
+               					</div>
+               				</div>
+	                  	</div>
+	                  
+                    </div>
+               
+                </div>
+            </div>
+            
+           <footer class="footer">
+                <div class="container-fluid">
+                  
+                    <p class="copyright pull-right">
+                        &copy;
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>
+                        <a href="">Service Express</a>, Proyecto Integrador II
+                    </p>
+                </div>
+            </footer>
+            
+   		                    			
+
+			
+        </div>
+    </div>
+
+
+
+
+  
+
+
+   
+								
+
+<!--   Core JS Files   -->
+<script src="mdCliente/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="mdCliente/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="mdCliente/js/material.min.js" type="text/javascript"></script>
+<!--  Charts Plugin -->
+<script src="mdCliente/js/chartist.min.js"></script>
+<!--  Dynamic Elements plugin -->
+<script src="mdCliente/js/arrive.min.js"></script>
+<!--  PerfectScrollbar Library -->
+<script src="mdCliente/js/perfect-scrollbar.jquery.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="mdCliente/js/bootstrap-notify.js"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="mdCliente/js/material-dashboard.js?v=1.2.0"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="mdCliente/js/demo.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+    	
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+    });
+</script>
+
+  <script type='text/javascript'  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoh5VY3tU59YfI6v2zkJkzzqV-0-AM078&amp;signed_in=true&amp;libraries=places&amp;callback=initMap" ></script>
+	
+
+	
+	
+
+</h:body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<f:view>
+<h:head>
+<link rel="icon" type="image/png" href="imagenes/icon.png"/>
+  
+
+
+ <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <title>Registro | Service-Express</title>
+    
+    
+    <!-- Favicon-->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon"/>
+
+    <!-- Google Fonts -->
+<!--     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css"/> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css"/>
+
+    <!-- Bootstrap Core Css -->
+    <link href="mdCourier/plugins/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+
+    <!-- Waves Effect Css -->
+    <link href="mdCourier/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="mdCourier/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="mdCourier/css/style.css" rel="stylesheet"/>
+    
+</h:head>
+
+<h:body  style="background-image: url('https://www.urbaner.com/assets/img/landing/team/banner-nosotros-2.jpg');">
+	
+
+		
+		 <div class="login-box"  align="center" style="margin-top: 30px;">
+	        
+	        <div class="logo">
+	            <a href="javascript:void(0);" style="text-decoration: none;color: #ededed"><h1> SERVICE EXPRESS</h1></a>
+	           
+	        </div>
+
+	                		
+	        <div class="card"  style="width: 40%"  align="center">
+	            <div class="body" >
+		            	<h:form id="formRegistroCliente" >
+		            	
+		            
+		            		<div class="msg"> <h3> Registro de Cliente</h3></div>
+		                    
+		                    <table class="table">	
+		            			<tr>
+		            				<td colspan="1" style="width: 90px;">
+		            					
+						                            <h:outputLabel value="Nombre:" />
+						                    
+						                      
+		            				</td>
+		            				<td colspan="3">
+		            						
+		            				        <div class="input-group">
+						                        <div class="form-line">
+						                        		<p:inputText id="txtNombre" value="#{clienteJSF.nombre}" placeholder="Ingresar Nombre" required="true" validatorMessage="Ingrese solo letras" requiredMessage="Nombre requerido." styleClass="form-control" >
+						                        			<f:validateRegex pattern="^[a-zA-Z]+(.[A-z][_a-z0-9-]+)$"></f:validateRegex>
+						                        		</p:inputText>
+						                        </div>
+						                        <p:message for="txtNombre" />
+						                    </div>
+						            				
+		            				</td>
+		            				
+		            			</tr>
+		            			
+		            			<tr>
+		            				<td colspan="1" style="width: 90px;">
+		            					  		            					 
+		            					  
+						                           		<h:outputLabel value="Apellido:" />
+								
+						                  
+		            				
+		            				</td>
+		            				
+		            				<td colspan="3">
+		            			
+		            				        <div class="input-group">
+						                      
+						                        <div class="form-line">
+						                        	<p:inputText id="txtApellido" value="#{clienteJSF.apellido}" placeholder="Ingresar Apellido" required="true" validatorMessage="Ingrese solo letras" requiredMessage="Apellido es requerido." styleClass="form-control" >
+						                        		<f:validateRegex pattern="^[a-zA-ZñÑ]+(.[a-zA-ZñÑ][_a-z]+)+(.[a-zA-ZñÑ][_a-z]+)$"></f:validateRegex>
+						                        	
+						                        	</p:inputText>
+								
+						                        </div>
+						                        <p:message for="txtApellido" />
+						                    </div>
+						            				
+		            				</td>
+		            			
+		            			</tr>
+		            			
+		            			<tr>
+		            				<td colspan="1" style="width: 90px;">
+		            						            					 
+		            				              <h:outputLabel value="Celular" />
+						                     
+		            				</td>
+		            				
+		            				<td colspan="3">
+		
+		            				
+		            				        <div class="input-group">
+						                       
+						                        <div class="form-line">
+						                       <p:inputText id="txtCelular" value="#{clienteJSF.celular}" placeholder="Ingresar Celular" required="true" validatorMessage="Ingrese solo numeros, solo 9 digitos" requiredMessage="Celular es requerido" styleClass="form-control">
+						                        	<f:validateRegex pattern="[9][0-9]{8}"></f:validateRegex>
+						                        </p:inputText>
+						                        </div>
+						                         <p:message  for="txtCelular"/>
+						                    </div>
+						            				
+		            				</td>
+		            				
+		            			</tr>
+		            			
+		            			<tr>
+		            				<td colspan="1" style="width: 90px;">
+		            						            					 	
+		            				
+		            						       <h:outputLabel value="Email" />
+						                      
+		            				</td>
+		            				
+		            				<td colspan="3">
+		            				
+		            				        <div class="input-group">
+						                       
+						                        <div class="form-line">
+						                        	<p:inputText id="txtEmail"  value="#{clienteJSF.email}" placeholder="Ingresar Email" required="true" requiredMessage="Email es requerido" styleClass="form-control">
+						                        	
+						                        			 <f:validator validatorId="custon.emailValidacion" />
+						                        	</p:inputText>
+						                          
+						                        </div>
+						                         <p:message  for="txtEmail"/>
+						                    </div>
+						            				
+		            				</td>
+		            				
+		            			</tr>
+		            			
+		            			<tr>
+		            				<td colspan="1" style="width: 90px;">
+		            				
+		            						      <h:outputLabel  value="Contraseña" showDetail="true" autoUpdate="true" />
+						                       
+		            				</td>
+		            				
+		            				<td colspan="3">
+		            				
+		            				        <div class="input-group">
+						                       
+						                        <div class="form-line">
+<!-- 						                        	<p:password id="txtPass"   value="#{clienteJSF.contra}" placeholder="Ingrese contraseña" validatorMessage="Solo numeros y letras, sin espacion vacios." required="true" requiredMessage="Contraseña es requerida" styleClass="form-control"> -->
+						                        	  <p:password id="pwd1" placeholder="Ingrese Contraseña" value="#{clienteJSF.contra}" match="pwd2" label="Password 1" required="true" validatorMessage="Password no conincide con la confirmacion/ Ingrese solo numeros y letras" requiredMessage="Password es Requerido" styleClass="form-control">
+								 
+						                        		<f:validateRegex pattern="^[0-9a-zA-Z]+$" ></f:validateRegex>
+						                        	</p:password>
+						                        </div>
+						                         <p:message  for="pwd1" showDetail="true" autoUpdate="true" />
+						                    </div>
+						            				
+		            				</td>
+		            				
+		            			</tr>
+		            			
+		            			<tr>
+		            				<td colspan="1" style="width: 90px;">
+		            						       <h:outputLabel  value="Confirmar Contraseña"/>
+						                        
+		            				</td>
+		            				
+		            				<td colspan="3" >
+		            				
+		            				        <div class="input-group">
+						                       
+						                        <div class="form-line">
+<!-- 						                        	<p:password id="txtPass1"   value="#{clienteJSF.contra}" validatorMessage="Confirme Contraseña" placeholder="Ingrese contraseña" required="true" requiredMessage="Confirmacion es requerida" styleClass="form-control"> -->
+						                        	 <p:password id="pwd2" placeholder="Confirme Contraseña" value="#{clienteJSF.contra}" label="Password 2" required="true" validatorMessage="Solo numeros y letras" requiredMessage="Confirmacion de Password es Requerido" styleClass="form-control" >
+						                        		<f:validateRegex pattern="^[0-9a-zA-Z]+$"></f:validateRegex>
+						                        	</p:password>
+						                        </div>
+						                         <p:message  for="pwd2"/>
+						                    </div>
+						            				
+		            				</td>
+		            				
+		            			</tr>
+		            			
+		            		</table>
+		            		
+		            		
+		            		<table>
+		            			<tr>
+		            				<td colspan="3"  >
+		            			
+		            				
+										<p:commandButton value="Registrar" action="#{clienteJSF.registroCliente}"  update="formRegistroCliente"  styleClass="btn btn-block bg-blue waves-effect"  />
+									
+									
+								    
+									
+									
+		            				</td>
+		            				<td colspan="1">
+		            				
+		            					
+			            				<p:commandButton value="Limpiar" styleClass="btn btn-block bg-orange waves-effect" >
+							                <p:ajax update="formRegistroCliente" resetValues="true" />
+							            </p:commandButton>
+								    
+		            				</td>
+		            			
+		            			</tr>
+		            	
+		            		
+		            		</table>
+		            			 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+ 			
+		            		
+		            		<div align="right">
+		            			<p:link href="LoginCliente.xhtml" value="Iniciar Session" styleClass="btn btn-default"/>
+		            			
+		            		</div>	
+		            	</h:form>
+	               
+	            </div>
+	        </div>
+   		 </div>
+
+
+
+
+    <!-- Jquery Core Js -->
+    <script src="mdCourier/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="mdCourier/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="mdCourier/plugins/node-waves/waves.js"></script>
+
+    <!-- Validation Plugin Js -->
+    <script src="mdCourier/plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- Custom Js -->
+    <script src="mdCourier/js/admin.js"></script>
+    <script src="mdCourier/js/pages/examples/sign-in.js"></script>
+
+    
+</h:body>
+</f:view>
+
+
+</html>

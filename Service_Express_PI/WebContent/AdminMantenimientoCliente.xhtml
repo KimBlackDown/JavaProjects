@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:t="http://xmlns.jcp.org/jsf/composite/treetable"
+	>
+
+<f:view>
+<h:head>
+  <link rel="icon" type="image/png" href="imagenes/icon.png"/>
+  
+  
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Material Dashboard Lite</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes"/>
+
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite"/>
+
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="mdAdmin/images/touch/ms-touch-icon-144x144-precomposed.png"/>
+    <meta name="msapplication-TileColor" content="#3372DF"/>
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900' rel='stylesheet'
+          type='text/css'/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!-- inject:css -->
+    <link rel="stylesheet" href="mdAdmin/css/lib/getmdl-select.min.css"/>
+    <link rel="stylesheet" href="mdAdmin/css/lib/nv.d3.css"/>
+    <link rel="stylesheet" href="mdAdmin/css/application.css"/>
+    <!-- endinject -->
+	
+	
+</h:head>
+
+<h:body>
+
+	
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header is-small-screen">
+		    <header class="mdl-layout__header">
+		        <div class="mdl-layout__header-row">
+		        	<h3>#{usuarioJSF.TITLE_PAGE}</h3> <span> </span><h2>Bienvenido  </h2>
+		        	
+		            <div class="mdl-layout-spacer"></div>
+		           
+		            <div class="avatar-dropdown" id="icon">
+		                <span><p:outputLabel value="#{adminSession['nombre']}"/> <span> </span> <p:outputLabel value="#{adminSession['apellido']}"/> </span>
+		                <img src="mdAdmin/images/Icon_header.png"/>
+		            </div>
+		            <!-- Account dropdawn-->
+		            <ul class="mdl-menu mdl-list mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp account-dropdown"
+		                for="icon">
+		                <li class="mdl-list__item mdl-list__item--two-line">
+		                    <span class="mdl-list__item-primary-content">
+		                        <span class="material-icons mdl-list__item-avatar"></span>
+		                        <span><p:outputLabel value="#{adminSession['nombre']}"/> <span> </span> <p:outputLabel value="#{adminSession['apellido']}"/> </span>
+		                        <span class="mdl-list__item-sub-title"><p:outputLabel value="#{adminSession['email']}"/> </span>
+		                    </span>
+		                </li>
+		                <li class="list__item--border-top"></li>
+		                <li class="mdl-menu__item mdl-list__item">
+		                    <span class="mdl-list__item-primary-content">
+		                        <i class="material-icons mdl-list__item-icon">account_circle</i>
+		                        My account
+		                    </span>
+		                </li>
+		                <li class="mdl-menu__item mdl-list__item">
+		                    <span class="mdl-list__item-primary-content">
+		                        <i class="material-icons mdl-list__item-icon">check_box</i>
+		                        My tasks
+		                    </span>
+		                    <span class="mdl-list__item-secondary-content">
+		                      <span class="label background-color--primary">3 new</span>
+		                    </span>
+		                </li>
+		                <li class="mdl-menu__item mdl-list__item">
+		                    <span class="mdl-list__item-primary-content">
+		                        <i class="material-icons mdl-list__item-icon">perm_contact_calendar</i>
+		                        My events
+		                    </span>
+		                </li>
+		                <li class="list__item--border-top"></li>
+		                <li class="mdl-menu__item mdl-list__item">
+		                    <span class="mdl-list__item-primary-content">
+		                        <i class="material-icons mdl-list__item-icon">settings</i>
+		                        Settings
+		                    </span>
+		                </li>
+		                <li class="mdl-menu__item mdl-list__item">
+		                    <span class="mdl-list__item-primary-content">
+		                        <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
+		                        Log out
+		                        
+		                        
+		                    </span>
+		                </li>
+		               
+		                 <li class="mdl-menu__item mdl-list__item">
+		                	
+		               	<h:form>
+			               	 <span class="mdl-list__item-primary-content">
+			                      <p:commandLink action="#{usuarioJSF.cerrarSesion}">  <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
+			                        Log out
+			                        </p:commandLink>
+			                        
+			                    </span>
+		               	
+		               	</h:form>
+		                   
+		                </li>
+		            </ul>
+		
+		         
+		        </div>
+		    </header>
+		
+		
+		
+		
+		    <div class="mdl-layout__drawer">
+		        <header>Administrador</header>
+		        <nav class="mdl-navigation">
+		         	<a class="mdl-navigation__link mdl-navigation__link--current" href="index.html">
+		                <i class="material-icons" role="presentation">email</i>
+		                Pedidos Pendientes
+		            </a>
+		            <a class="mdl-navigation__link" href="index.html">
+		                <i class="material-icons" role="presentation">dashboard</i>
+		                 Pedidos  en Proceso
+		            </a>
+		            <a class="mdl-navigation__link" href="index.html">
+		                <i class="material-icons" role="presentation">drafts</i>
+		                 Pedidos  Atendidos
+		            </a>
+		            <a class="mdl-navigation__link" href="index.html">
+		                <i class="material-icons" role="presentation">person</i>
+		                Clientes
+		            </a>
+		            <a class="mdl-navigation__link" href="index.html">
+		                <i class="material-icons" role="presentation">directions_run</i>
+		                Courier
+		            </a>
+		          
+		            <a class="mdl-navigation__link" href="forms.html">
+		                <i class="material-icons" role="presentation">person_pin</i>
+		                Mi cuenta
+		            </a>
+		           
+		            <div class="mdl-layout-spacer"></div>
+		            <a class="mdl-navigation__link" href="https://github.com/CreativeIT/getmdl-dashboard">
+		                <i class="material-icons" role="presentation">link</i>
+		                Admin
+		            </a>
+		        </nav>
+		    </div>
+		
+		    <main class="mdl-layout__content">
+		
+		        <div class="mdl-grid mdl-grid--no-spacing">
+		        
+		        
+		       
+		        
+		        
+			       <div class="mdl-grid mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+			       
+			         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+		              
+			       
+			         <h3 style="color: white;">Lista de Clientes</h3>
+				       <h:form  >
+						    <p:dataTable id="tbl" var="car" value="#{usuarioJSF.lstCliente}" 
+						    			 styleClass="" 
+						                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+						                 paginator="true" rows="10" style="margin-bottom:20px; background-color: gray;">
+						 
+						       
+						 
+						        <p:column styleClass="mdl-data-table__cell--non-numeric">
+						            <f:facet name="header">
+						               <h5> <h:outputText value="Cliente" /></h5>
+						            </f:facet>
+						            <h:outputText value="#{car.cod_cliente}" />
+						         	
+						        </p:column>
+						         <p:column styleClass="mdl-data-table__cell--non-numeric">
+						            <f:facet name="header">
+						               <h5> <h:outputText value="Nombres" /></h5>
+						            </f:facet>
+						            <h:outputText value="#{car.nombre}" /> <h:outputText value="#{car.apellido}" />
+						         	 
+						        </p:column>
+						        
+						         <p:column styleClass="mdl-data-table__cell--non-numeric">
+						            <f:facet name="header">
+						               <h5> <h:outputText value="Celular" /></h5>
+						            </f:facet>
+						            <h:outputText value="#{car.celular}" />
+						         	 
+						        </p:column>
+						 
+						 	
+						       
+ 								<p:column  >
+						            
+								 	<p:commandButton icon="ui-icon-pencil" value="Ver" action="#{usuarioJSF.adminActualizarCliente}">
+								 		
+								 		<f:setPropertyActionListener target="#{usuarioJSF.cliente}" value="#{car}"></f:setPropertyActionListener>
+								 	</p:commandButton>
+		  
+		                
+						        </p:column>						         
+						    
+						        
+						    </p:dataTable>
+						   
+						</h:form>
+				       
+					 </div>
+					</div>
+			
+		
+		
+		
+		
+		
+		
+		        </div>
+		
+		    </main>
+		</div>
+
+<!-- inject:js -->
+<script src="mdAdmin/js/d3.js"></script>
+<script src="mdAdmin/js/getmdl-select.min.js"></script>
+<script src="mdAdmin/js/material.js"></script>
+<script src="mdAdmin/js/nv.d3.js"></script>
+<script src="mdAdmin/js/widgets/employer-form/employer-form.js"></script>
+<script src="mdAdmin/js/widgets/line-chart/line-chart-nvd3.js"></script>
+<script src="mdAdmin/s/widgets/map/maps.js"></script>
+<script src="mdAdmin/js/widgets/pie-chart/pie-chart-nvd3.js"></script>
+<script src="mdAdmin/js/widgets/table/table.js"></script>
+<script src="mdAdmin/js/widgets/todo/todo.js"></script>
+<!-- endinject -->
+		
+		
+	
+</h:body>
+
+
+</f:view>
+
+
+</html>

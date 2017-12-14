@@ -1,0 +1,646 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+    
+
+<html lang="es"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<h:head>
+<link rel="icon" type="image/png" href="imagenes/icon.png"/>
+  
+     <title>Perfil Cliente | Service Express</title>
+    
+   
+    <meta name="viewport" content="width=device-width" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    
+    
+    <!-- Bootstrap core CSS     -->
+    <link href="mdCliente/css/bootstrap.min.css" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href="mdCliente/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="mdCliente/css/demo.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'/>
+
+
+
+<!-- Para mostra alertas de alertify -->
+      <link rel="stylesheet" href="alertify/themes/alertify.core.css" />
+	<link rel="stylesheet" href="alertify/themes/alertify.default.css" id="toggleCSS" />
+
+	<style>
+  		
+		.ui-growl {
+			
+			padding-top:80px;
+				right:30px;
+		
+		}
+	</style>
+  
+  	
+	<!-- 	para las alertas de alertify -->
+	<script  src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="alertify/lib/alertify.min.js"></script>
+	
+	
+</h:head>
+
+<h:body>
+<f:view>
+ <div class="wrapper">
+     <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Service Express
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    
+                    <li >
+                        <p:commandLink action="#{pedidoJSF.redirectHome}">
+                            <i class="material-icons">dashboard</i>
+                            <p>Registro de Pedido</p>
+                            
+                        </p:commandLink>
+                    </li>
+                    
+                   
+                   
+                    <li>
+                           
+                        <p:commandLink action="#{pedidoJSF.cargarSeguimientoA}">
+                            <i class="material-icons">person</i>
+                            <p>Seguimiento</p>
+<!--                             	<f:setPropertyActionListener value="bluesky" target="#{cambiadorTemas.tema}"/>  -->
+                       	</p:commandLink>
+                    </li>
+                  
+                     <li>
+                        <p:commandLink action="#{pedidoJSF.cargarHistorialA}">
+                            <i class="material-icons">content_paste</i>
+                            <p>Historia</p>
+                        </p:commandLink>
+                    </li>
+                  
+                    <li>
+                        <a href="ClientePago.xhtml">
+                            <i class="material-icons">attach_money</i>
+                            <p>Medio de Pago</p>
+                        </a>
+                    </li>
+                    
+                    <li class="active">
+                    	<p:commandLink action="#{clienteJSF.cargarPerfil}">
+                            <i class="material-icons">person</i>
+                            <p>Mi Perfil</p>
+                        </p:commandLink>
+                    </li>
+                   
+                    
+                     
+                </ul>
+            </div>
+        </div>
+        
+        
+        <div class="main-panel">
+        
+                    	
+            <div >        	
+	            <div class="navbar navbar-transparent navbar-fixed" style="background-color: #fff;height: 70px">
+	                
+	                <div class="container-fluid" >
+	               		<div class="navbar-header">
+	                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+	                            <span class="sr-only">Toggle navigation</span>
+	                            <span class="icon-bar"></span>
+	                            <span class="icon-bar"></span>
+	                            <span class="icon-bar"></span>
+	                        </button>
+	                       
+	                    </div>
+	                    <div class="collapse navbar-collapse ">
+	                        <ul class="nav navbar-nav navbar-left ">
+	                            <li>
+	                                    <i class="" style="color:purple ">
+	                                  	    	
+	                                  	  <h3> Bienvenido,  #{clienteJSF.saludos}   <span> </span> <p:outputLabel value="#{clienteSessionA['nombre']}"/><span> </span>  <p:outputLabel value="#{clienteSessionA['apellido']}"/>  
+	                                  	
+	                                  	 </h3>
+	                                 
+	                                  	 
+	                                    </i>
+	                            </li>
+	                        </ul>
+	                        
+	                            
+	                          <ul class="nav navbar-nav navbar-right">
+	                           
+	                           
+	                           
+	                          
+	                      <li>
+	                                <a href="HomeCliente.xhtml" >
+	                                    <i class="material-icons btn-white btn btn-round btn-just-icon">dashboard</i>
+	                                    <p class="hidden-lg hidden-md">Dashboard</p>
+	                                </a>
+	                            </li>
+	                            
+	                          
+	                             
+	                            
+		                          
+		                           
+	                         
+	                                  	
+	                               <li class="dropdown">
+	                                <a href="#" class="dropdown-toggle " data-toggle="dropdown">
+	                                    <i class="material-icons btn-white btn btn-round btn-just-icon">person</i>
+	                                    <p class="hidden-lg hidden-md">Profile</p>
+	                                </a>
+		                              
+		                                        <h:form >
+	                           
+		                                <ul class="dropdown-menu">
+		                                  
+		                                  <li>
+		                                  		<p:commandLink action="#{clienteJSF.cargarPerfil}">
+				                                	 <span class="mdl-list__item-primary-content">
+								                        <i class="material-icons mdl-list__item-icon">account_circle</i>
+								                       Mi Perfil
+								                    </span>
+		                               			 </p:commandLink>
+		                                
+		                                    </li>
+		                                    <li>
+		                                        <a href="#">
+		                                        	 <span class="mdl-list__item-primary-content">
+								                        <i class="material-icons mdl-list__item-icon">check_box</i>
+								                        My tasks
+								                    </span>
+								                    <span class="mdl-list__item-secondary-content">
+								                      <span class="label background-color--primary">3 new</span>
+								                    </span>
+		                                        </a>
+		                                    </li>
+		                                    <li>
+		                                        <a href="#">
+		                                        	<span class="mdl-list__item-primary-content">
+								                        <i class="material-icons mdl-list__item-icon">settings</i>
+								                        Settings
+								                    </span>
+		                                        </a>
+		                                    </li>
+		                                 
+		                                   <li>
+		                                        <p:commandLink action="#{clienteJSF.cerrarSesion}">
+		                                        	<span class="mdl-list__item-primary-content">
+								                        <i class="material-icons mdl-list__item-icon">exit_to_app</i>
+								                        Logout
+								                    </span>
+		                                        </p:commandLink>
+		                                    </li>
+		                                 
+		                                </ul>
+		                       
+	                           </h:form>
+	                            </li>
+	                           
+	                         
+	                            
+	                        </ul>
+	                       
+	                                                  
+	    
+	                    </div>
+	                
+	    
+	                </div>
+	                
+	    
+	            </div>
+	            
+            
+            </div>
+            
+         
+         
+           <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header" data-background-color="orange">
+                                    <h4 class="title">Perfil</h4>
+                                    <p class="category">Actualizar datos de Perfil</p>
+                                </div>
+                                <div class="card-content">
+                                    <h:form id="formularioCli">
+                                    
+									<p:growl id="growPerfil" showDetail="true" sticky="true"  />  
+	
+                                        <div class="row">
+                                            
+                                            <div class="col-md-2" align="center">
+                                                    <i class="material-icons btn-white btn btn-just-icon">person</i>
+	                                   				
+                                            </div>
+                                            <h:inputHidden> </h:inputHidden>
+                                            <div class="col-md-10">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Nombres</label>
+                                                    
+                                                    <p:inputText  value="#{clienteJSF.nombre}" styleClass="form-control" id="txtNombre"  validatorMessage="Nombre:Ingresar solo letras" required="true" requiredMessage="Ingrese Nombre">
+                                                    	<f:validateRegex pattern="^[a-zA-ZñÑ]+(.[A-zñÑ][_a-zA-ZñÑ]+)$"></f:validateRegex>
+                                                    </p:inputText>
+                                                    <p:message for="txtNombre" />
+                                                </div>
+                                            </div>
+                                           
+                                           
+                                        </div>
+                                     
+                                         <div class="row">
+                                            <div class="col-md-2" align="center">
+                                                    <i class="material-icons btn-white btn btn-just-icon">person</i>
+	                                   				
+                                                
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Apellidos</label>
+                                                       <p:inputText  value="#{clienteJSF.apellido}" styleClass="form-control" id="txtApellido" validatorMessage="Apellido:Ingrese solo letras" required="true" requiredMessage="Ingrese Apellido">
+                                                     <f:validateRegex pattern="^[a-zA-ZñÑ]+(.[A-zñÑ][_a-zA-ZñÑ]+)$"></f:validateRegex>
+						                        	
+                                                    </p:inputText>
+                                                    <p:message for="txtApellido" />
+                                               
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2" align="center">
+                                                    <i class="material-icons btn-white btn btn-just-icon">phone</i>
+	                                   				
+                                            </div>
+                                            
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Celular</label>
+                                                        <p:inputText  value="#{clienteJSF.celular}" styleClass="form-control" id="txtCelular" validatorMessage="Celular:Ingresar solo numeros, solo 9 digitos" required="true" requiredMessage="Ingrese Celular">
+															<f:validateRegex pattern="[9][0-9]{8}"></f:validateRegex>                                                        
+                                                        </p:inputText>
+                                                        <p:message for="txtCelular"></p:message>
+                                               
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                        
+                                        <div class="row">
+                                        	<div class="col-md-2" align="center">
+                                                    <i class="material-icons btn-white btn btn-just-icon">email</i>
+	                                   				 
+                                            </div>
+                                            
+                                            <div class="col-md-10">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Email / Usuario</label>
+                                                        <p:inputText  value="#{clienteJSF.email}" styleClass="form-control" disabled="true"  >
+                                                        		<f:validateRegex  pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" />	
+                                                        </p:inputText>
+                                               			
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                     
+                                        
+													<a href="#" class="btn btn-primary pull-right" id="confirma" >Actualizar Datos</a>
+		                                   	
+												<p:commandButton id="btnActualizar" value="Actualizar" styleClass="btn btn-primary pull-right" style="display:none;"  
+												action="#{clienteJSF.actualizarCliente}"  update="growPerfil"/>
+												
+												
+                                        
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card card-profile">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="imagenes/userIcono.png" />
+                                           <i class="material-icons btn-white btn btn-just-icon">person</i>
+	                                   			
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h6 class="category text-gray">#{clienteSessionA['email']}</h6>
+                                    <h4 class="card-title">#{clienteSessionA['nombre']} <span> </span> #{clienteSessionA['apellido']}</h4>
+                                    <p class="card-content">
+                                       Los datos brindados a nuestra empresa "SERVICE EXPRESS" son de caracter privado.
+                                       No se brinda a terceros por ningun motivo.
+                                    </p>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+         
+         
+         
+         
+        <footer class="footer">
+                <div class="container-fluid">
+                  
+                    <p class="copyright pull-right">
+                        &copy;
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>
+                        <a href="">Service Express</a>, Proyecto Integrador II
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+
+
+</f:view>
+								
+
+<!--   Core JS Files   -->
+<script src="mdCliente/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="mdCliente/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="mdCliente/js/material.min.js" type="text/javascript"></script>
+<!--  Charts Plugin -->
+<script src="mdCliente/js/chartist.min.js"></script>
+<!--  Dynamic Elements plugin -->
+<script src="mdCliente/js/arrive.min.js"></script>
+<!--  PerfectScrollbar Library -->
+<script src="mdCliente/js/perfect-scrollbar.jquery.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="mdCliente/js/bootstrap-notify.js"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="mdCliente/js/material-dashboard.js?v=1.2.0"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="mdCliente/js/demo.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+    });
+</script>
+
+  <script type='text/javascript'  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoh5VY3tU59YfI6v2zkJkzzqV-0-AM078&amp;signed_in=true&amp;libraries=places&amp;callback=initMap" ></script>
+	
+	
+	  <script type='text/javascript'>
+// 	  $(document).ready(function(){  
+	  
+//	    $("#formRegistro\\:rbVisa").click(function() {  
+	    	
+//	        if($("#rbEfect").is(':checked')) {  
+	            
+	        	
+	        	
+//	        	 $("#formRegistro\\:soles").attr('disabled', true);  
+//	        	 alert('asdasda no')
+	        	 
+//	        } else {
+	        	
+	        	
+//	        	alert('asdasda si')
+	        	 
+//	        	 $("#formRegistro\\:soles").attr('disabled', false);  
+	            
+//	        }  
+//	    });  
+	  
+//	}); 
+
+
+
+
+
+
+$(document).ready(function(){  
+	  
+	    $("#formRegistro\\:rbVisa").click(function() {  
+	    	
+	  	 	 $("#soles").attr('disabled', true);  
+		
+
+	    });  
+	  
+	}); 
+
+$(document).ready(function(){  
+	  
+	    $("#formRegistro\\:rbEfect").click(function() {  
+	    	
+	  	 	 $("#formRegistro\\:soles").attr('disabled', false);  
+		
+	    });  
+	  
+	}); 
+
+
+	function reset () {
+		$("#toggleCSS").attr("href", "alertify/themes/alertify.default.css");
+		alertify.set({
+			
+			labels : {
+				ok     : "Actualizar",
+				cancel : "Cancelar"
+			},
+			delay : 5000,
+			buttonReverse : false,
+			buttonFocus   : "ok"
+		});
+	}
+
+	// ==============================
+	// Standard Dialogs
+	$("#alert").on( 'click', function () {
+		reset();
+		alertify.alert("This is an alert dialog");
+		return false;
+	});
+
+	$("#confirma").on( 'click', function () {
+		reset();
+		$("#toggleCSS").attr("href", "alertify/themes/alertify.bootstrap.css");
+		
+		alertify.confirm("<big><strong > <span>Actualizacion de Datos Personales </span></strong> </big>  <br></br>Actualizara sus datos <br></br>SERVICE EXPRESS", function (e) {
+			if (e) {
+				
+				$("#formularioCli\\:btnActualizar").click();
+				
+				alertify.success("Acepto el Reistro");
+			} else {
+				alertify.error("Cancelo registro");
+
+				return;
+			}
+		});
+		return false;
+	});
+
+	$("#prompt").on( 'click', function () {
+		reset();
+		alertify.prompt("This is a prompt dialog", function (e, str) {
+			if (e) {
+				alertify.success("You've clicked OK and typed: " + str);
+			} else {
+				alertify.error("You've clicked Cancel");
+			}
+		}, "Default Value");
+		return false;
+	});
+
+	// ==============================
+	// Ajax
+	$("#ajax").on("click", function () {
+		reset();
+		alertify.confirm("Confirm?", function (e) {
+			if (e) {
+				alertify.alert("Successful AJAX after OK");
+			} else {
+				alertify.alert("Successful AJAX after Cancel");
+			}
+		});
+	});
+
+	// ==============================
+	// Standard Dialogs
+	$("#notification").on( 'click', function () {
+		reset();
+		alertify.log("Standard log message");
+		return false;
+	});
+
+	$("#success").on( 'click', function () {
+		reset();
+		alertify.success("Success log message");
+		return false;
+	});
+
+	$("#error").on( 'click', function () {
+		reset();
+		alertify.error("Error log message");
+		return false;
+	});
+
+	// ==============================
+	// Custom Properties
+	$("#delay").on( 'click', function () {
+		reset();
+		alertify.set({ delay: 10000 });
+		alertify.log("Hiding in 10 seconds");
+		return false;
+	});
+
+	$("#forever").on( 'click', function () {
+		reset();
+		alertify.log("Will stay until clicked", "", 0);
+		return false;
+	});
+
+	$("#labels").on( 'click', function () {
+		reset();
+		alertify.set({ labels: { ok: "Accept", cancel: "Deny" } });
+		alertify.confirm("Confirm dialog with custom button labels", function (e) {
+			if (e) {
+				alertify.success("You've clicked OK");
+			} else {
+				alertify.error("You've clicked Cancel");
+			}
+		});
+		return false;
+	});
+
+	$("#focus").on( 'click', function () {
+		reset();
+		alertify.set({ buttonFocus: "cancel" });
+		alertify.confirm("Confirm dialog with cancel button focused", function (e) {
+			if (e) {
+				alertify.success("You've clicked OK");
+			} else {
+				alertify.error("You've clicked Cancel");
+			}
+		});
+		return false;
+	});
+
+	$("#order").on( 'click', function () {
+		reset();
+		alertify.set({ buttonReverse: true });
+		alertify.confirm("Confirm dialog with reversed button order", function (e) {
+			if (e) {
+				alertify.success("You've clicked OK");
+			} else {
+				alertify.error("You've clicked Cancel");
+			}
+		});
+		return false;
+	});
+
+	// ==============================
+	// Custom Log
+	$("#custom").on( 'click', function () {
+		reset();
+		alertify.custom = alertify.extend("custom");
+		alertify.custom("I'm a custom log message");
+		return false;
+	});
+
+	// ==============================
+	// Custom Themes
+	$("#bootstrap").on( 'click', function () {
+		reset();
+		$("#toggleCSS").attr("href", "alertify/themes/alertify.bootstrap.css");
+		alertify.prompt("Prompt dialog with bootstrap theme", function (e) {
+			if (e) {
+				alertify.success("You've clicked OK");
+			} else {
+				alertify.error("You've clicked Cancel");
+			}
+		}, "Default Value");
+		return false;
+	});
+</script>
+
+	
+	  
+
+</h:body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:t="http://xmlns.jcp.org/jsf/composite/treetable"
+	>
+
+<f:view>
+<h:head>
+  <link rel="icon" type="image/png" href="imagenes/icon.png"/>
+  
+  
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Material Dashboard Lite</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes"/>
+
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite"/>
+
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="mdAdmin/images/touch/ms-touch-icon-144x144-precomposed.png"/>
+    <meta name="msapplication-TileColor" content="#3372DF"/>
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900' rel='stylesheet'
+          type='text/css'/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!-- inject:css -->
+    <link rel="stylesheet" href="mdAdmin/css/lib/getmdl-select.min.css"/>
+    <link rel="stylesheet" href="mdAdmin/css/lib/nv.d3.css"/>
+    <link rel="stylesheet" href="mdAdmin/css/application.css"/>
+    <!-- endinject -->
+	
+	
+	
+	<!-- Bootstrap -->
+		<link href="diseIndex/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="diseIndex/css/font-awesome.min.css" rel="stylesheet"/>
+		<link href="diseIndex/css/owl.carousel.css" rel="stylesheet"/>
+		<link href="diseIndex/css/owl.theme.css" rel="stylesheet"/>
+		<link href="diseIndex/css/owl.transitions.css" rel="stylesheet"/>
+		
+		
+		
+		
+	
+
+<!-- Para mostra alertas de alertify -->
+      <link rel="stylesheet" href="alertify/themes/alertify.core.css" />
+	<link rel="stylesheet" href="alertify/themes/alertify.default.css" id="toggleCSS" />
+	
+		
+			<!-- 	para las alertas de alertify -->
+	<script  src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="alertify/lib/alertify.min.js"></script>
+	
+	
+	
+</h:head>
+
+<h:body>
+
+	
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header is-small-screen">
+		    <header class="mdl-layout__header">
+		        <div class="mdl-layout__header-row">
+		        	<h3>#{usuarioJSF.TITLE_PAGE}</h3> <span> </span><h2>Bienvenido  </h2>
+		        	
+		            <div class="mdl-layout-spacer"></div>
+		          
+		
+		            <div class="avatar-dropdown" id="icon">
+		                <span><p:outputLabel value="#{adminSession['nombre']}"/> <span> </span> <p:outputLabel value="#{adminSession['apellido']}"/> </span>
+		                <img src="mdAdmin/images/Icon_header.png"/>
+		            </div>
+		            <!-- Account dropdawn-->
+		            <ul class="mdl-menu mdl-list mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp account-dropdown"
+		                for="icon">
+		                <li class="mdl-list__item mdl-list__item--two-line">
+		                    <span class="mdl-list__item-primary-content">
+		                        <span class="material-icons mdl-list__item-avatar"></span>
+		                        <span><p:outputLabel value="#{adminSession['nombre']}"/> <span> </span> <p:outputLabel value="#{adminSession['apellido']}"/> </span>
+		                        <span class="mdl-list__item-sub-title"><p:outputLabel value="#{adminSession['email']}"/> </span>
+		                    </span>
+		                </li>
+		                <li class="list__item--border-top"></li>
+		                <li class="mdl-menu__item mdl-list__item">
+		                    <span class="mdl-list__item-primary-content">
+		                        <i class="material-icons mdl-list__item-icon">account_circle</i>
+		                        My account
+		                    </span>
+		                </li>
+		                <li class="mdl-menu__item mdl-list__item">
+		                    <span class="mdl-list__item-primary-content">
+		                        <i class="material-icons mdl-list__item-icon">check_box</i>
+		                        My tasks
+		                    </span>
+		                    <span class="mdl-list__item-secondary-content">
+		                      <span class="label background-color--primary">3 new</span>
+		                    </span>
+		                </li>
+		                <li class="mdl-menu__item mdl-list__item">
+		                    <span class="mdl-list__item-primary-content">
+		                        <i class="material-icons mdl-list__item-icon">perm_contact_calendar</i>
+		                        My events
+		                    </span>
+		                </li>
+		                <li class="list__item--border-top"></li>
+		                <li class="mdl-menu__item mdl-list__item">
+		                    <span class="mdl-list__item-primary-content">
+		                        <i class="material-icons mdl-list__item-icon">settings</i>
+		                        Settings
+		                    </span>
+		                </li>
+		                <li class="mdl-menu__item mdl-list__item">
+		                    <span class="mdl-list__item-primary-content">
+		                        <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
+		                        Log out
+		                        
+		                        
+		                    </span>
+		                </li>
+		               
+		                 <li class="mdl-menu__item mdl-list__item">
+		                	
+		               	<h:form>
+			               	 <span class="mdl-list__item-primary-content">
+			                      <p:commandLink action="#{usuarioJSF.cerrarSesion}">  <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
+			                        Log out
+			                        </p:commandLink>
+			                        
+			                    </span>
+		               	
+		               	</h:form>
+		                   
+		                </li>
+		            </ul>
+		
+		         
+		        </div>
+		    </header>
+		
+		
+		
+		
+		    <div class="mdl-layout__drawer">
+		        <header>Administrador</header>
+		        <nav class="mdl-navigation">
+		         	<a class="mdl-navigation__link mdl-navigation__link--current" href="index.html">
+		                <i class="material-icons" role="presentation">email</i>
+		                Pedidos Pendientes
+		            </a>
+		            <a class="mdl-navigation__link" href="index.html">
+		                <i class="material-icons" role="presentation">dashboard</i>
+		                 Pedidos  en Proceso
+		            </a>
+		            <a class="mdl-navigation__link" href="index.html">
+		                <i class="material-icons" role="presentation">drafts</i>
+		                 Pedidos  Atendidos
+		            </a>
+		            <a class="mdl-navigation__link" href="index.html">
+		                <i class="material-icons" role="presentation">person</i>
+		                Clientes
+		            </a>
+		            <a class="mdl-navigation__link" href="index.html">
+		                <i class="material-icons" role="presentation">directions_run</i>
+		                Courier
+		            </a>
+		          
+		            <a class="mdl-navigation__link" href="forms.html">
+		                <i class="material-icons" role="presentation">person_pin</i>
+		                Mi cuenta
+		            </a>
+		           
+		            <div class="mdl-layout-spacer"></div>
+		            <a class="mdl-navigation__link" href="https://github.com/CreativeIT/getmdl-dashboard">
+		                <i class="material-icons" role="presentation">link</i>
+		                Admin
+		            </a>
+		        </nav>
+		    </div>
+		
+		    <main class="mdl-layout__content">
+		
+		        <div class="mdl-grid mdl-grid--no-spacing">
+		        
+		        
+		        
+		        
+			       <div class="mdl-grid mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+			       
+			         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+		              
+			       
+			         <h3 style="color: white;">Detalle de pedido</h3>
+				       <h:form id="form" >
+							<p:panel >
+							 		
+							 <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone ">
+							 	
+							 	
+							 	<table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp projects-table">
+				                        <thead>
+					                        <tr>
+					                            <th class="mdl-data-table__cell--non-numeric">Datos </th>
+					                            <th class="mdl-data-table__cell--non-numeric">Valores</th>
+					                            <th class="mdl-data-table__cell--non-numeric">Acciones</th>
+					                        </tr>
+				                        </thead>
+				                        <tbody>
+					                        <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Direccion de recojo</td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	<p:inputText value="#{usuarioJSF.pedido.direccion_ini}" />   
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	
+					                            </td>
+					                            
+					                        </tr>
+					                        <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Distrito de recojo</td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	 <p:inputText value="#{usuarioJSF.pedido.distrito1.descripcion}"/> 
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	
+					                            </td>
+					                            
+					                        </tr>
+					                        <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Nombres Emisor </td>
+					                            <td class="mdl-data-table__cell--non-numeric"> 
+					                            	<p:inputText value="#{usuarioJSF.pedido.remitente}"/> 
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	
+					                            </td>
+					                            
+					                        </tr>
+					                        <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Celular Emisor</td>
+					                            <td class="mdl-data-table__cell--non-numeric"> 
+					                            	<p:inputText value="#{usuarioJSF.pedido.celular1}"/>
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	
+					                            </td>
+					                            
+					                        </tr>
+					                        <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Direccion de entrega</td>
+					                            <td class="mdl-data-table__cell--non-numeric"> 
+					                            	<p:inputText value="#{usuarioJSF.pedido.direccion_fin}"/> 
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	
+					                            </td>
+					                            
+					                        </tr>
+					                        <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Distrito de entrega</td>
+					                            <td class="mdl-data-table__cell--non-numeric"> 
+					                            	<p:inputText value="#{usuarioJSF.pedido.distrito2.descripcion}"/>
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	
+					                            </td>
+					                            
+					                        </tr>
+					                        <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Nombres de receptor</td>
+					                            <td class="mdl-data-table__cell--non-numeric"> 
+					                            	<p:inputText value="#{usuarioJSF.pedido.receptor}"/> 
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	
+					                            </td>
+					                            
+					                        </tr>
+					                        <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Intrucciones de paquete</td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	 <p:inputText value="#{usuarioJSF.pedido.instrucciones}"/> 
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	
+					                            </td>
+					                            
+					                        </tr>
+					                        <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Documento pequeño</td>
+					                            <td class="mdl-data-table__cell--non-numeric">  	
+                           							<p:inputText id="documento_peq"  value="#{usuarioJSF.pedido.documento_peq}"  type="number" required="true" requiredMessage="Valor requerido"   >
+														<f:validateLongRange minimum="0" maximum="8"></f:validateLongRange>
+													</p:inputText>
+													
+												</td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	<p:message for="documento_peq"></p:message>
+					                            </td>
+					                            
+					                        </tr>
+					                        <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Documento mediano</td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	<p:inputText id="documento_med"  value="#{usuarioJSF.pedido.documento_med}"  type="number" required="true" requiredMessage="Valor requerido"   >
+														<f:validateLongRange minimum="0" maximum="8"></f:validateLongRange>
+													</p:inputText> 
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	
+					                            </td>
+					                            
+					                        </tr>
+					                        <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Documento grande</td>
+					                            <td class="mdl-data-table__cell--non-numeric"> 
+					                            	<p:inputText id="documento_gra"  value="#{usuarioJSF.pedido.documento_gra}"  type="number" required="true" requiredMessage="Valor requerido"   >
+														<f:validateLongRange minimum="0" maximum="8"></f:validateLongRange>
+													</p:inputText> 
+					                            	
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                           		
+					                           </td>
+					                            
+					                        </tr>
+					                          <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Kilometros de recorrido</td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	<p:inputText value="#{usuarioJSF.pedido.kilometros}"/> 
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	
+					                            </td>
+					                            
+					                        </tr>
+					                          <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Tiempo de envio</td>
+					                            <td class="mdl-data-table__cell--non-numeric"> 
+					                            	<p:inputText value="#{usuarioJSF.pedido.tiempo}"/>
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	
+					                            </td>
+					                            
+					                        </tr>
+					                          <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Costo de envio</td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	<p:inputText value="#{usuarioJSF.pedido.precio}"/> 
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	
+					                            </td>
+					                            
+					                        </tr>
+					                         <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Metodo de pago</td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            	<p:inputText value="#{usuarioJSF.pedido.pago}"/> 
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric">
+					                            
+					                            </td>
+					                            
+					                        </tr>
+					                      <tr>
+					                            <td class="mdl-data-table__cell--non-numeric">Courier</td>
+					                            <td class="mdl-data-table__cell--non-numeric">#{usuarioJSF.pedido.cod_usuario.nombre} 
+					                            	<span> </span>#{usuarioJSF.pedido.cod_usuario.apellido} 
+					                            </td>
+					                            <td class="mdl-data-table__cell--non-numeric"> 
+					                        
+					                        	
+					                            <button type="button" class="btn btn-primary" id="btnCargar"   data-toggle="modal" data-target="#exampleModal">
+												  Asignar Courier
+												</button>
+					                          	
+					                          	
+					                            
+					                             </td>
+					                            
+					                        </tr>
+					                      
+					                      
+				                        </tbody>
+				                 </table>
+							 
+							 		
+							 	
+							 	  
+							 	
+							 </div>
+							
+							
+							
+									
+							 		
+							 		
+							 			<f:facet name="footer" >
+							 				<div align="center">
+						        			 	<p:commandButton id="btnGuardar" icon="ui-icon-pencil" value="Guardar Cambios" update="form" />
+											 	<p:commandButton id="actionGuardar"  icon="ui-icon-pencil"  value="Guardar Cambios" action="#{usuarioJSF.actualizarPedidoPendiente}" style="display:none;"/>
+											 	
+											 	
+											 	<p:commandButton id="btnCancelar" icon="ui-icon-pencil" value="Cancelar Pedido" />
+											 	<p:commandButton id="actionCancelar" icon="ui-icon-pencil" value="Cancelar Pedido" action="#{usuarioJSF.cancelarPedido}" style="display:none;"/>
+											 	
+											 	
+											 	<p:commandButton  icon="ui-icon-pencil" value="Ir a principal" action="#{usuarioJSF.redirectPrincipalAdmin}"/>
+											 		
+											 </div>
+
+			  				       		 </f:facet>
+								 	    
+							 	    
+							 	    
+							 	    </p:panel>
+							
+							
+							
+		
+
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModal" tabindex="-1" 
+								role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 90px">
+								  <div class="modal-dialog" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title" id="exampleModalLabel">Lista de Courier</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div class="modal-body">
+								        
+								       <h:form  >
+											    <p:dataTable id="tbl" var="car" value="#{usuarioJSF.lstCourier}" 
+											    			 styleClass="" 
+											                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+											                 paginator="true" rows="10" style="margin-bottom:20px; background-color: gray;">
+											 
+											     
+											 
+											        <p:column styleClass="mdl-data-table__cell--non-numeric">
+											            <f:facet name="header">
+											               <h5> <h:outputText value="Courier" /></h5>
+											            </f:facet>
+											            <h:outputText value="#{car.nombre}" />
+											         	 <span> </span>
+											            <h:outputText value="#{car.apellido}" />
+											            
+											        </p:column>
+											 	    <p:column styleClass="mdl-data-table__cell--non-numeric">
+											            <f:facet name="header">
+											               <h5> <h:outputText value="Celular" /></h5>
+											            </f:facet>
+											            <h:outputText value="#{car.celular}" />
+											            
+											        </p:column>
+											        <p:column styleClass="mdl-data-table__cell--non-numeric">
+											            <f:facet name="header">
+											               <h5> <h:outputText value="Email" /></h5>
+											            </f:facet>
+											            <h:outputText value="#{car.email}" />
+											            
+											        </p:column>
+											               
+											               
+											               
+											 
+											         <p:column  styleClass="mdl-data-table__cell--non-numeric" >
+											             <f:facet name="header">
+											               <h5> <h:outputText value="Accion" /></h5>
+											            </f:facet>
+													 	<p:commandButton icon="ui-icon-pencil"  value="Asignar" action="#{usuarioJSF.seleccionCourier}" update="form" ajax="true" process="@this" >
+													 		
+													 		<f:setPropertyActionListener target="#{usuarioJSF.idUsuario}" value="#{car.cod_usuario}"></f:setPropertyActionListener>
+													 	
+													 	</p:commandButton>
+								 
+								               
+											        </p:column>
+											        
+											        
+											       
+											        
+											    </p:dataTable>
+													 
+									   </h:form>
+											       
+								        
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								        <button type="button" class="btn btn-primary">Save changes</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+							
+							
+							
+				
+						</h:form>
+				       
+					 </div>
+					</div>
+			
+		
+		
+		
+		
+		
+		
+		        </div>
+		
+		    </main>
+		</div>
+
+<!-- inject:js -->
+<script src="mdAdmin/js/d3.js"></script>
+<script src="mdAdmin/js/getmdl-select.min.js"></script>
+<script src="mdAdmin/js/material.js"></script>
+<script src="mdAdmin/js/nv.d3.js"></script>
+<script src="mdAdmin/js/widgets/employer-form/employer-form.js"></script>
+<script src="mdAdmin/js/widgets/line-chart/line-chart-nvd3.js"></script>
+<script src="mdAdmin/s/widgets/map/maps.js"></script>
+<script src="mdAdmin/js/widgets/pie-chart/pie-chart-nvd3.js"></script>
+<script src="mdAdmin/js/widgets/table/table.js"></script>
+<script src="mdAdmin/js/widgets/todo/todo.js"></script>
+<!-- endinject -->
+		
+		
+
+			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="diseIndex/js/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="diseIndex/js/bootstrap.min.js"></script>
+		<script src="diseIndex/js/jquery.easing.min.js"></script>
+		<script src="diseIndex/js/jquery.stellar.js"></script>
+		<script src="diseIndex/js/jquery.appear.js"></script>
+		<script src="diseIndex/js/jquery.nicescroll.min.js"></script>
+		<script src="diseIndex/js/jquery.countTo.js"></script>
+		<script src="diseIndex/js/jquery.shuffle.modernizr.js"></script>
+		<script src="diseIndex/js/jquery.shuffle.js"></script>
+		<script src="diseIndex/js/owl.carousel.js"></script>
+		<script src="diseIndex/js/jquery.ajaxchimp.min.js"></script>
+		<script src="diseIndex/js/script.js"></script>
+
+		
+			
+		
+		
+		
+		 <script type='text/javascript'>
+
+
+	   $(document).ready(function(){  
+		  
+		    $("#form\\:btnCargar").click(function() {  
+		    	
+		  	 	 $("#formDetalle\\:cargarCourier").click();  
+      		
+		    });  
+		  
+		});
+	 
+	  
+	 
+	  
+	  
+		function reset () {
+			$("#toggleCSS").attr("href", "alertify/themes/alertify.default.css");
+			alertify.set({
+				
+				labels : {
+					ok     : "Actualizar",
+					cancel : "Cancelar"
+				},
+				delay : 5000,
+				buttonReverse : false,
+				buttonFocus   : "ok"
+			});
+		}
+
+		// ==============================
+		// Standard Dialogs
+		$("#alert").on( 'click', function () {
+			reset();
+			alertify.alert("This is an alert dialog");
+			return false;
+		});
+
+		$("#form\\:btnGuardar").on( 'click', function () {
+			reset();
+			$("#toggleCSS").attr("href", "alertify/themes/alertify.bootstrap.css");
+			
+			
+			alertify.confirm("<big><strong > <span>Actualizacion de pedido </span></strong> </big>  <br></br>Acualizara el pedido, confirme su actualizacion. <br></br>SERVICE EXPRESS", function (e) {
+				if (e) {
+					
+					$("#form\\:actionGuardar").click();
+					
+					alertify.success("Acepto la actualizacion");
+				} else {
+					alertify.error("Cancelo la actualizacion");
+
+					return;
+				}
+			});
+			return false;
+		});
+
+		
+		
+
+		function reset1 () {
+			$("#toggleCSS").attr("href", "alertify/themes/alertify.default.css");
+			alertify.set({
+				
+				labels : {
+					ok     : "Aceptar",
+					cancel : "Cancelar"
+				},
+				delay : 5000,
+				buttonReverse : false,
+				buttonFocus   : "ok"
+			});
+		}
+
+		$("#form\\:btnCancelar").on( 'click', function () {
+			reset1();
+			$("#toggleCSS").attr("href", "alertify/themes/alertify.bootstrap.css");
+			
+			
+			alertify.confirm("<big><strong > <span>Cancelacion de Pedido </span></strong> </big>  <br></br>Cancelar pedido, confirme la cancelacion del pedido. <br></br>SERVICE EXPRESS", function (e) {
+				if (e) {
+					
+					$("#form\\:actionCancelar").click();
+					
+					alertify.success("Acepto la cancelacion");
+				} else {
+					alertify.error("Cancelo la actualizacion");
+
+					return;
+				}
+			});
+			return false;
+		});
+
+		
+	</script>
+
+	
+			
+</h:body>
+
+
+</f:view>
+
+
+</html>

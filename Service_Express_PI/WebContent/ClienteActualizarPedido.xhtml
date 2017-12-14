@@ -1,0 +1,1190 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+    
+
+<html lang="es"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<link rel="icon" type="image/png" href="imagenes/icon.png"/>
+  
+    <title>Home Cliente | Service Express</title>
+    
+    <meta name="viewport" content="width=device-width" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    
+    
+    <!-- Bootstrap core CSS     -->
+    <link href="mdCliente/css/bootstrap.min.css" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href="mdCliente/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="mdCliente/css/demo.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'/>
+  	<style>
+  		
+		.ui-growl {
+			
+			padding-top:80px;
+				right:30px;
+		
+		}
+	</style>
+	
+	
+
+
+<!-- Para mostra alertas de alertify -->
+      <link rel="stylesheet" href="alertify/themes/alertify.core.css" />
+	<link rel="stylesheet" href="alertify/themes/alertify.default.css" id="toggleCSS" />
+	
+	<style>
+		.alertify-log-custom {
+			background: blue;
+			
+		}
+	</style>
+	
+
+
+
+</h:head>
+
+<h:body>
+
+ <div class="wrapper">
+        <div class="sidebar" data-color="blue" data-image="../assets/img/sidebar-1.jpg" >
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Service Express
+                </a>
+            </div>
+           <h:form>
+           
+            <div class="sidebar-wrapper"  >
+                <ul class="nav" >
+                    
+                   
+                    <li>
+                          <p:commandLink action="#{pedidoJSF.redirectHome}">
+                            <i class="material-icons">dashboard</i>
+                            <p>Registro de Pedido</p>
+                            
+                        </p:commandLink>
+                    </li>
+                    
+                   
+                   
+                    <li  class="active">
+                           
+                        <p:commandLink action="#{pedidoJSF.cargarSeguimientoA}">
+                            <i class="material-icons">person</i>
+                            <p>Seguimiento</p>
+<!--                             	<f:setPropertyActionListener value="bluesky" target="#{cambiadorTemas.tema}"/>  -->
+                       	</p:commandLink>
+                    </li>
+                  
+                     <li>
+                        <p:commandLink action="#{pedidoJSF.cargarHistorialA}">
+                            <i class="material-icons">content_paste</i>
+                            <p>Historia</p>
+                        </p:commandLink>
+                    </li>
+                  
+                    <li>
+                        <a href="ClientePago.xhtml">
+                            <i class="material-icons">attach_money</i>
+                            <p>Medio de Pago</p>
+                        </a>
+                    </li>
+                    
+                    <li>
+                    	<p:commandLink action="#{clienteJSF.cargarPerfil}">
+                            <i class="material-icons">person</i>
+                            <p>Mi Perfil</p>
+                        </p:commandLink>
+                    </li>
+                   
+                    
+                     
+                </ul>
+            </div>
+       
+      	 	</h:form>
+        </div>
+        
+        <div class="main-panel">
+        
+                    	
+            <div >        	
+	            <div class="navbar navbar-transparent navbar-fixed" style="background-color: #fff;height: 70px">
+	                
+	                <div class="container-fluid" >
+	               <div class="navbar-header">
+	                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+	                            <span class="sr-only">Toggle navigation</span>
+	                            <span class="icon-bar"></span>
+	                            <span class="icon-bar"></span>
+	                            <span class="icon-bar"></span>
+	                        </button>
+	                       
+	                    </div>
+	                    <div class="collapse navbar-collapse ">
+	                        <ul class="nav navbar-nav navbar-left ">
+	                            <li>
+	                                    <i class="" style="color:purple ">
+	                                    	
+	                                  	  <h3> Bienvenido, #{clienteJSF.saludos}   <span> </span> <h:outputLabel value="#{clienteSessionA['nombre']}"/><span> </span>  <p:outputLabel value="#{clienteSessionA['apellido']}"/>  
+	                                  	
+	                                  	 </h3>
+	                                  	  
+	                                    </i>
+	                            </li>
+	                        </ul>
+	                        
+	                        
+	                        
+	                        <ul class="nav navbar-nav navbar-right">
+	                           
+	                           
+	                           
+	                          
+	                            <li>
+	                                <a href="HomeCliente.xhtml" class="dropdown-toggle " data-toggle="dropdown" >
+	                                    <i class="material-icons btn-white btn btn-round btn-just-icon">dashboard</i>
+	                                    <p class="hidden-lg hidden-md">Dashboard</p>
+	                                </a>
+	                            </li>
+	                            
+	                            
+	                          
+	                             
+	                          
+		                           
+	                         
+	                                  	
+	                               <li class="dropdown">
+	                                <a href="#" class="dropdown-toggle " data-toggle="dropdown">
+	                                    <i class="material-icons btn-white btn btn-round btn-just-icon">person</i>
+	                                    <p class="hidden-lg hidden-md">Profile</p>
+	                                </a>
+		                              
+		                                        <h:form >
+	                           
+		                                <ul class="dropdown-menu">
+		                                  
+		                                   <li>
+		                                  		<p:commandLink action="#{clienteJSF.cargarPerfil}">
+				                                	 <span class="mdl-list__item-primary-content">
+								                        <i class="material-icons mdl-list__item-icon">account_circle</i>
+								                       Mi Perfil
+								                    </span>
+		                               			 </p:commandLink>
+		                                
+		                                    </li>
+		                                    <li>
+		                                        <a href="#">
+		                                        	 <span class="mdl-list__item-primary-content">
+								                        <i class="material-icons mdl-list__item-icon">check_box</i>
+								                        My tasks
+								                    </span>
+								                    <span class="mdl-list__item-secondary-content">
+								                      <span class="label background-color--primary">3 new</span>
+								                    </span>
+		                                        </a>
+		                                    </li>
+		                                    <li>
+		                                        <a href="#">
+		                                        	<span class="mdl-list__item-primary-content">
+								                        <i class="material-icons mdl-list__item-icon">settings</i>
+								                        Settings
+								                    </span>
+		                                        </a>
+		                                    </li>
+		                                 
+		                                   <li>
+		                                        <p:commandLink action="#{clienteJSF.cerrarSesion}">
+		                                        	<span class="mdl-list__item-primary-content">
+								                        <i class="material-icons mdl-list__item-icon">exit_to_app</i>
+								                        Logout
+								                    </span>
+		                                        </p:commandLink>
+		                                    </li>
+		                                 
+		                                </ul>
+		                       
+	                           </h:form>
+	                            </li>
+	                           
+	                          
+										
+	                           
+	                            
+	                            
+	                        </ul>
+	                       
+	                                                
+	    
+	                    </div>
+	                
+	    
+	                </div>
+	                
+	    
+	            </div>
+	            
+            
+            </div>
+            
+            
+            
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+	                    <h:form id="formActu" acceptcharset="UTF-8" enctype="multipart/form-data" >
+	                  	
+	                  	
+	                 		 
+	                  	
+	                  	<p:growl id="growAct" showDetail="true" globalOnly="true" />	
+	                 
+		                    <div class="col-lg-6 col-md-12">
+		                            <div class="card">
+		                                <div class="card-header" data-background-color="blue">
+		                                    <h4 class="title">Actualizacion de Solicitud de Pedido</h4>
+		                                    <p class="category">Actualizar el  pedido de servicio</p>
+		                                </div>
+		                             	 <div class="card-content">
+		                                	
+		                                	
+		                                	
+		                                		
+		                                		<div class="row alert">
+								                 		<h5 class="">Origen</h5>
+								            
+								            
+								            
+								                 			
+			                                            <div class="col-md-8">
+			                                                <div >
+			                                                    <label class="control-label">Direccion de Recojo</label>
+			                                               		
+			                                               		<h:inputText value="#{pedidoJSF.direccion_ini}" required="true"  requiredMessage="Requerido"  style="height: 35px" id="origin-input" class="form-control"   />
+			                                               		<p:message  for="origin-input"/>
+			                                               		
+			                                                </div>
+			                                            </div>
+			                                            
+			                                          	<div class="col-md-4">
+			                                                <div >
+			                                                    <label class="control-label">Distrito</label>
+			                                                  
+			                                                  <h:selectOneMenu  id="cboDistrito1"  value="#{pedidoJSF.distrito1}" required="true" styleClass="form-control"   requiredMessage="Distrito Obligatorio">
+																<f:selectItem itemLabel="- seleccionar -" itemValue=""></f:selectItem>
+																<f:selectItems value="#{pedidoJSF.lstDistrito}" var="varDist" itemValue="#{varDist.cod_distrito}" itemLabel="#{varDist.descripcion}">
+																</f:selectItems>
+																
+															</h:selectOneMenu>
+															<p:message for="cboDistrito1" />
+															
+			                                                </div>
+			                                            </div>
+			                                            
+			                                            
+								                 		
+								                 		 <div class="col-md-9">
+			                                                <div class="form-group label-floating" >
+			                                                    <label class="control-label">¿Con quien hablamos?</label>
+			                                               		
+			                                               		<h:inputText  value="#{pedidoJSF.remitente}" placeholder='¿Con quien hablamos?'  required="true" requiredMessage="Requerido" style="height: 35px" id="remitente" class="form-control"   />
+			                                               		
+			                                               		<p:message  for="remitente"/>
+			                                                </div>
+			                                             </div>
+			                                            
+				                                         <div class="col-md-3">
+				                                               <div class="form-group label-floating" >
+				                                                    <label class="control-label">Celular</label>
+				                                               		
+				                                               		<h:inputText  value="#{pedidoJSF.celular1}" placeholder="Celular"  required="true" requiredMessage="Celular requerido" style="height: 35px" id="celular1" class="form-control"   />
+				                                               		<p:message  for="celular1"/>
+				                                                </div>
+				                                          </div>
+									                 		 
+		                                        </div>
+		                                        	
+		                                        <div class="row alert">
+								                 		<h5 class="">Destino</h5>
+								                 			
+			                                            <div class="col-md-8">
+			                                                <div >
+			                                                    <label class="control-label">Direccion de Enteega</label>
+			                                               		
+			                                               		<h:inputText  value="#{pedidoJSF.direccion_fin}" placeholder='Direccion de Enteega' required="true" requiredMessage="Destino requerido"  style="height: 35px" id="destination-input" class="form-control"   />
+			                                               		<p:message  for="destination-input"/>
+			                                                </div>
+			                                            </div>
+			                                            
+			                                        	<div class="col-md-4">
+			                                                <div >
+			                                                    <label class="control-label">Distrito</label>
+			                                                  <h:selectOneMenu  id="cboDistrit2"  value="#{pedidoJSF.distrito2}" required="true" styleClass="form-control" requiredMessage="Distrito Obligatorio">
+																<f:selectItem itemLabel="- seleccionar -" itemValue=""></f:selectItem>
+																<f:selectItems value="#{pedidoJSF.lstDistrito}" var="varDist" itemValue="#{varDist.cod_distrito}" itemLabel="#{varDist.descripcion}">
+																</f:selectItems>
+																
+															</h:selectOneMenu>
+															<p:message for="cboDistrit2"/>
+															
+			                                                </div>
+			                                            </div>
+								                 		
+								                 		
+								                 		
+								                 		  <div class="col-md-9">
+			                                                <div class="form-group label-floating" >
+			                                                    <label class="control-label">¿Con quien hablamos?</label>
+			                                               		
+			                                               		<h:inputText value="#{pedidoJSF.receptor}" placeholder='¿Con quien hablamos?' required="true" requiredMessage="Receptor requerido"  style="height: 35px" id="receptor" class="form-control"   />
+			                                               		<p:message  for="receptor"/>
+			                                                </div>
+			                                            </div>
+			                                            
+			                                            <div class="col-md-3">
+			                                               <div class="form-group label-floating" >
+			                                                    <label class="control-label">Celular</label>
+			                                               		
+			                                               		<h:inputText value="#{pedidoJSF.celular2}" placeholder="Celular"  required="true" requiredMessage="Celular requerido" style="height: 35px" id="celular2" class="form-control"   />
+			                                               		<p:message  for="celular2"/>
+			                                                </div>
+			                                            </div>
+			                                            
+			                                            <div class="col-md-12">
+			                                               <div class="form-group label-floating" >
+			                                                    <label class="control-label">Instrucciones especiales para el Currier</label>
+			                                               		
+			                                               		<h:inputText  value="#{pedidoJSF.instrucciones}" required="true" requiredMessage="Indicaciones Requerdia" placeholder="Instrucciones especiales para el Currier"   style="height: 35px" id="indicaciones" class="form-control"   />
+			                                               		<p:message  for="indicaciones"/>
+			                                               		
+			                                                </div>
+			                                            </div>
+			                                             
+		                                        	</div>
+		                                        				
+												<div class="row alert">	
+														 <div class="col-md-12">
+																<table   class="table">
+																	<caption style="font-size: 22px">Informacion de Envio</caption>
+																	
+																	<tr align="center"  >
+																	
+																		<td  style="width: 30%">
+																			<img  src="imagenes/email.png"/>
+																		</td>
+																		<td align="center" style="width: 45%" >
+																			<label style="font-size: 18px" >Documentos/Pequeño</label>				
+																			<label>Hasta 30x30x30cm ó 3Kgs</label>
+																		</td >
+																		<td align="right" >
+																			<p:inputText id="documento_peq"  value="#{pedidoJSF.documento_peq}"  type="number" required="true" requiredMessage="Valor requerido" validatorMessage="Ingresar Numero positivos"  styleClass="form-control"   >
+																				<f:validateLongRange minimum="0" maximum="8"></f:validateLongRange>
+																			</p:inputText>
+																			<p:message for="documento_peq" />
+																			
+																		</td>
+																		
+																	</tr>
+																
+																	<tr >
+																	
+																		<td  style="width: 30%">
+																			<img  src="imagenes/regalo.png"/>
+																		</td>
+																		<td align="center" style="width: 45%" >
+																			<label style="font-size: 18px"> Documentos/Mediano</label>				
+																			<label>Hasta 45x45x35cm ó 15Kgs</label>
+																		</td >
+																		<td align="right" >
+																			<p:inputText id="documento_med" value="#{pedidoJSF.documento_med}" type="number"  required="true" requiredMessage="Valor requerido" validatorMessage="Ingresar Numero positivos" styleClass="form-control"   >
+																				<f:validateLongRange minimum="0" maximum="8"></f:validateLongRange>
+																			</p:inputText>
+																			
+																			<p:message for="documento_med" />
+																			
+																		</td>
+																		
+																	</tr>
+																
+																
+																	<tr align="right">
+																	
+																		<td  style="width: 30%">
+																			<img  src="imagenes/camion.png"/>
+																		</td>
+																		<td align="center" style="width: 45%" >
+																			<label style="font-size: 18px"> Documentos/Grande</label>				
+																			<label>Hasta 90x70x50cm ó 20Kgs</label>
+																		</td >
+																		<td align="right" >
+																			<p:inputText id="documento_gra" value="#{pedidoJSF.documento_gra}" type="number"  required="true" requiredMessage="Valor requerido" validatorMessage="Ingresar Numero positivos" styleClass="form-control"  onchange=" return actualizaPrecio()" >
+																				<f:validateLongRange minimum="0" maximum="8"></f:validateLongRange>
+																			</p:inputText>
+																			
+																			<p:message for="documento_gra" />
+																		
+																		</td>
+																		
+																	</tr>
+																
+																</table>
+											
+											
+														
+															
+															
+														</div>
+												
+												</div>
+		                                     	
+		                               
+		                                
+		                                 </div>
+		                             </div>
+		                              
+		                     </div>
+		                     
+	                        <div class="col-lg-6 col-md-12">
+	                            <div class="card">
+	                                <div class="card-header" data-background-color="blue">
+	                                    <h4 class="title">Ruta de envio</h4>
+	                                    <p class="category">Ruta de recorrido del personal currier</p>
+	                                </div>
+	                                <div class="card-content">
+	                                	
+	                                	<div class="row alert">	  
+					    				 <div id="map" class="mapa" style="width: 100%; height: 600px; margin-top: -10px"></div>
+		   								 </div>
+		   								  <div id="mode-selector"  style="display: none;">
+		
+									          <input type="radio" name="type" id="changemode-driving" checked="checked"/>
+									          <label for="changemode-driving">Driving</label>
+									
+									          <input type="radio" name="type" id="changemode-walking"/>
+									          <label for="changemode-walking">Walking</label>
+									
+									          <input type="radio" name="type" id="changemode-transit"/>
+									          <label for="changemode-transit">Transit</label>
+									
+									       </div>
+		
+		
+
+			  	 							  <script type='text/javascript'>
+									 
+										   
+									        function initMap() {
+										        
+										          var map = new google.maps.Map(document.getElementById('map'), {
+										            mapTypeControl: false,
+										            center: {lat:  -12.0431800, lng: -77.0282400},
+										            zoom: 13
+										          });
+										              new AutocompleteDirectionsHandler(map);   
+										        }
+										        
+										    
+										         /**
+										          * @constructor
+										         */
+										         
+										         
+										        function AutocompleteDirectionsHandler(map) {
+										
+										          this.map = map;
+										          this.originPlaceId = null;
+										          this.destinationPlaceId = null;
+										          this.travelMode = 'DRIVING';
+										          
+										          //variables para la distancia
+										          this.inicio=null;
+										          this.fin=null;
+										          var originInput = document.getElementById('formActu:origin-input');
+										          
+										          var destinationInput = document.getElementById('formActu:destination-input');
+										        
+										          var modeSelector = document.getElementById('mode-selector');
+										        
+										          this.directionsService = new google.maps.DirectionsService;
+										          this.directionsDisplay = new google.maps.DirectionsRenderer;
+										          
+										          this.directionsDisplay.setMap(map);
+										        
+										          var originAutocomplete = new google.maps.places.Autocomplete(
+										              originInput, {placeIdOnly: true});
+										          
+										          var destinationAutocomplete = new google.maps.places.Autocomplete(
+										              destinationInput, {placeIdOnly: true});
+										          
+										          this.setupClickListener('changemode-walking', 'WALKING');
+										          this.setupClickListener('changemode-transit', 'TRANSIT');
+										          this.setupClickListener('changemode-driving', 'DRIVING');
+										        
+										         this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+										         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+										         
+										    
+										            google.maps.event.addDomListener(window, 'load', function () {
+										                
+										                var places = new google.maps.places.Autocomplete(document.getElementById('formActu:origin-input'));
+										                google.maps.event.addListener(places, 'place_changed', function () {
+										                    var place1 = places.getPlace();
+										                    var address = place1.formatted_address;
+										                     var latitude10 = place1.geometry.location.lat();
+										                    var longitude10 = place1.geometry.location.lng();
+										                    var mesg = "Address: " + address;
+										                    mesg += "\nLatitude: " + latitude10;
+										                    mesg += "\nLongitude: " + longitude10;
+										                    
+										                    inicio = new google.maps.LatLng(latitude10,longitude10);
+										                    distancia();
+										                });            
+										                
+										            });
+										    
+										            google.maps.event.addDomListener(window, 'load', function () {
+										                var places = new google.maps.places.Autocomplete(document.getElementById('formActu:destination-input'));
+										                google.maps.event.addListener(places, 'place_changed', function () {
+										                    var place1 = places.getPlace();
+										                    var address = place1.formatted_address;
+										                    var latitude20 = place1.geometry.location.lat();
+										                    var longitude20 = place1.geometry.location.lng();
+										                    var mesg = "Address: " + address;
+										                    mesg += "\nLatitude: " + latitude20;
+										                    mesg += "\nLongitude: " + longitude20;
+										                    //alert(mesg);
+										                    fin = new google.maps.LatLng(latitude20,longitude20);
+										                    
+										                    distancia();
+										                });
+										            });
+										            
+										            
+										            function distancia() {
+										            
+										            	if(inicio!=null &amp;&amp; fin!=null){
+										                            
+										                             service = new google.maps.DistanceMatrixService();
+										                               
+										                             service.getDistanceMatrix(
+										                                 {
+										                                     origins: [inicio],
+										                                     destinations: [fin],
+										                                     travelMode: google.maps.TravelMode.DRIVING,
+										                                     unitSystem: google.maps.UnitSystem.METRIC,
+										                                     avoidHighways: false,
+										                                     avoidTolls: false
+										                                 }, 
+										                                 callback
+										                             );           
+										                        }
+										            }
+										            
+										           
+										            function callback(response, status) {
+										                
+										
+										                var kilometros=0;
+										                var tiempovalor=0;
+										            	var precio=0.0;
+										                
+										                var velocidad = 25*1000/3600;
+										
+										                var hora=0;
+										                var min=0;
+										                var seg=0;
+										
+										                var //orig = document.getElementById("text1"),
+										                    //dest = document.getElementById("text2"),
+										                    dist = document.getElementById("formActu:kilometros"),
+										                    tiempo = document.getElementById("formActu:tiempo");
+										               		 precio= document.getElementById("formActu:precio");
+											               
+										                
+										                if(status=="OK") {
+										               //     orig.value = response.destinationAddresses[0];
+										                 //   dest.value = response.originAddresses[0];
+										                    dist.value = response.rows[0].elements[0].distance.text;
+										                    
+										                    kilometros  = document.getElementById("formActu:kilometros").value;
+										                   
+										                    tiempovalor = parseInt(kilometros) * 1000 / velocidad;
+						
+										               					                    
+											                var hours = Math.floor( tiempovalor / 3600 );  
+											                var minutes = Math.floor( (tiempovalor % 3600) / 60 );
+											                var seconds = tiempovalor % 60;
+											                 
+											                //Anteponiendo un 0 a los minutos si son menos de 10 
+											                minutes = minutes &lt; 10 ? '0' + minutes : minutes;
+											                 
+											                //Anteponiendo un 0 a los segundos si son menos de 10 
+											                seconds = seconds &lt; 10 ? '0' + seconds : seconds;
+											                 
+											                var result = hours + ":" + minutes + ":" + seconds;
+											                
+										                    tiempo.value = result;
+										                    
+										                    
+										                    var caja1= document.getElementById("formActu:documento_peq").value; 
+										                    var caja2= document.getElementById("formActu:documento_med").value; 
+										                    var caja3= document.getElementById("formActu:documento_gra").value; 
+										                    precio= document.getElementById("formActu:precio");
+											                
+										                    kilometros  = document.getElementById("formActu:kilometros").value;
+												             tiempovalor = parseInt(kilometros) * 1000 / velocidad;
+															var costo=0.0;
+										                    costo = caja3 > 0 ?  2* tiempovalor/100 :tiempovalor/100 ;
+										                    precio.value=costo;
+										                    
+										                    
+										                    
+										                    	
+										                } else {
+										                    alert("Error: " + status);
+										                }
+										            }
+										          }
+							               
+						
+										        
+										     
+										        
+										        // Sets a listener on a radio button to change the filter type on Places
+										        // Autocomplete.
+										        AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, emod) {
+										          var radioButton = document.getElementById(id);
+										          var me = this;
+										          radioButton.addEventListener('click', function() {
+										            me.travelMode = mode;
+										            me.route();
+										          });
+										        };
+										        
+										        AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+										          var me = this;
+										          autocomplete.bindTo('bounds', this.map);
+										          autocomplete.addListener('place_changed', function() {
+										            var place = autocomplete.getPlace();
+										            
+										            if (!place.place_id) {
+										              window.alert("Please select an option from the dropdown list.");
+										              return;
+										            }
+										            if (mode === 'ORIG') {
+										                me.originPlaceId = place.place_id;
+										            } else {
+										              me.destinationPlaceId = place.place_id;
+										            }
+										                    me.route();
+											          });
+												        
+												        };
+												        
+										        
+										        AutocompleteDirectionsHandler.prototype.route = function() {
+										          if (!this.originPlaceId || !this.destinationPlaceId) {
+										         	   return;
+										          }
+										          
+										          var me = this;
+										          
+										          this.directionsService.route({
+										                origin: {'placeId': this.originPlaceId},
+											            destination: {'placeId': this.destinationPlaceId},
+										                travelMode: this.travelMode
+										          }, function(response, status) {
+										            if (status === 'OK') {
+										                me.directionsDisplay.setDirections(response);
+										            } else {
+										               window.alert('Directions request failed due to ' + status);
+										            }
+										          });
+										        };
+										        
+										        
+										        
+							                    function actualizaPrecio(){
+								                    //PRECIO
+							                		var kilometros=0;
+							                		var tiempovalor=0;
+								                    var costo=0.0;
+								                    var precio=0.0;
+								                    var velocidad = 25*1000/3600;
+								                    var caja1= document.getElementById("formActu:documento_peq").value; 
+								                    var caja2= document.getElementById("formActu:documento_med").value; 
+								                    var caja3= document.getElementById("formActu:documento_gra").value; 
+								                    
+								                    precio= document.getElementById("formActu:precio");
+									                kilometros  = document.getElementById("formActu:kilometros").value;
+										            
+									                tiempovalor = parseInt(kilometros) * 1000 / velocidad;
+													
+								                    costo = caja3 > 0 ?  2 * tiempovalor/100 :tiempovalor/100 ;
+								                    precio.value=costo;
+						
+								                    
+										       }
+						
+						
+							                    
+									 </script>
+										
+	                               
+	                              
+        	
+	                                	
+	                                	
+	                                </div>
+	                             </div>
+	                              
+	                    	 </div>
+	                    	 
+	                    	 	 
+	                    	 	 
+	                    	 
+	           	    	  <div class="col-lg-2 col-md-6 col-sm-6">
+	                           <div class="card card-stats">
+	                               <div class="card-header" data-background-color="orange">
+	                                   <i class="material-icons">timeline</i>
+	                               </div>
+	                               <div class="card-content">
+	                                   <p class="category">Kilometros</p>
+	                                   <h3 class="title">
+	                                     	<h:inputText styleClass="form-control" id="kilometros" value="#{pedidoJSF.kilometros}"  />
+										
+	                                   </h3>
+	                               </div>
+	                              
+	                           </div>
+	                       </div>
+	                       
+	                       
+	                        <div class="col-lg-2 col-md-6 col-sm-6">
+	                            <div class="card card-stats">
+	                                <div class="card-header" data-background-color="green">
+	                                    <i class="material-icons">timelapse</i>
+	                                </div>
+	                                <div class="card-content">
+	                                    <p class="category">Tiempo</p>
+	                                    <h3 class="title">
+	                                    
+	                                    	  <h:inputText  styleClass="form-control" id="tiempo" value="#{pedidoJSF.tiempo}"    />
+							
+	                                    </h3>
+	                                </div>
+	                        
+	                            </div>
+	                         </div>
+	                        
+	                        
+	                        <div class="col-lg-2 col-md-6 col-sm-6">
+	                            <div class="card card-stats">
+	                                <div class="card-header" data-background-color="red">
+	                                    <i class="material-icons">attach_money</i>
+	                                </div>
+	                                <div class="card-content">
+	                                    <p class="category">Precio</p>
+	                                    <h3 class="title">
+	                                      <h:inputText  value="#{pedidoJSF.precio}"  styleClass="form-control"  id="precio"    />
+	                                    </h3>
+	                                </div>
+	                              
+	                            </div>
+	                        </div>
+	                      
+			                  
+			                    	
+		                   	 <div class="col-lg-6 col-md-12">
+		                    	 
+		                    	   <div class="card">
+		                    	  
+			                    	   	<div class="col-lg-12 col-md-6">
+			                    	   	
+			                    	     	 <h5>Metodo de Pago</h5>
+				                    	   	 <div class="col-lg-6 col-md-3">
+				                    	   	 
+											     
+						                    	 <p:selectOneRadio id="data" value="#{pedidoJSF.pago}" binding="#{yesOrNo}" required="true">
+												   <f:selectItem itemValue="1" itemLabel="Visa" />
+												   <f:selectItem itemValue="2" itemLabel="Efectivo" />
+												   <p:ajax update="yesdata" />
+												</p:selectOneRadio>
+												
+											   </div>
+										       <div class="col-lg-6 col-md-3">
+										       
+											       	<p:inputText type="number" value="#{pedidoJSF.soles}" id="yesdata" disabled="#{yesOrNo.value != '2'}" style="margin-bottom:10px" />
+			                    	   	
+			                    	   	
+										        </div>
+										        
+										</div>
+	                    		  	</div>
+	                    		  
+		                    	   
+		                    	
+			                    	 	
+		                    </div>
+		                    	
+	                    	 <div class="col-lg-12 col-md-12">
+	                             <div class="card">
+		                        		
+		                                <div class="card-body" align="center">
+		                                
+		                                <h5>La cancelacion de pedido solo es permitida hasta antes que sea asignada a un Courier.</h5>
+		                                    <div class="col-lg-12 col-md-6">
+		                                   		
+		                                   		<a href="#" class="btn btn-primary" id="confirm">Actualizar Pedido</a>
+		                                   		
+		                    					<h:commandButton value="Limpiar"   styleClass="btn btn-primary"   />
+		                    				
+		                    					<a href="#" class="btn btn-primary" id="cancel">Cancelar Pedido</a>
+		                                   	
+		                                   		<h:commandButton id="btnCancelar"  styleClass="btn btn-default"  action="#{pedidoJSF.cancelarPedido}" style="display:none;" />
+		                    					<h:commandButton id="btnActualizar"  styleClass="btn btn-primary"  action="#{pedidoJSF.actualizarPedido}"  style="display:none;"  />
+		                    				
+
+		                    				</div>
+		                                </div>
+				                    
+			                    	 </div>
+	                        </div> 	
+	                   	 
+							
+	                       </h:form>                 	
+	                 
+                    </div>
+               
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                  
+                    <p class="copyright pull-right">
+                        &copy;
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>
+                        <a href="">Service Express</a>, Proyecto Integrador II
+                    </p>
+                </div>
+            </footer>
+            
+   		                    			
+
+			
+        </div>
+    </div>
+
+
+
+
+  
+
+
+   
+								
+
+<!--   Core JS Files   -->
+<script src="mdCliente/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="mdCliente/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="mdCliente/js/material.min.js" type="text/javascript"></script>
+<!--  Charts Plugin -->
+<script src="mdCliente/js/chartist.min.js"></script>
+<!--  Dynamic Elements plugin -->
+<script src="mdCliente/js/arrive.min.js"></script>
+<!--  PerfectScrollbar Library -->
+<script src="mdCliente/js/perfect-scrollbar.jquery.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="mdCliente/js/bootstrap-notify.js"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="mdCliente/js/material-dashboard.js?v=1.2.0"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="mdCliente/js/demo.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+    });
+</script>
+
+  <script type='text/javascript'  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoh5VY3tU59YfI6v2zkJkzzqV-0-AM078&amp;signed_in=true&amp;libraries=places&amp;callback=initMap" ></script>
+	
+	
+<!-- 	para las alertas de alertify -->
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="alertify/lib/alertify.min.js"></script>
+	
+		
+	  <script type='text/javascript'>
+	
+	  
+// 	  $(document).ready(function(){  
+		  
+// 		    $("#formActu\\:rbVisa").click(function() {  
+		    	
+// 		        if($("#rbEfect").is(':checked')) {  
+		            
+		        	
+		        	
+// 		        	 $("#formActu\\:soles").attr('disabled', true);  
+// 		        	 alert('asdasda no')
+		        	 
+// 		        } else {
+		        	
+		        	
+// 		        	alert('asdasda si')
+		        	 
+// 		        	 $("#formActu\\:soles").attr('disabled', false);  
+		            
+// 		        }  
+// 		    });  
+		  
+// 		}); 
+	  
+	  
+	  
+	  $(document).ready(function(){  
+		  
+		    $("#formActu\\:rbVisa").click(function() {  
+		    	
+		  	 	 $("#soles").attr('disabled', true);  
+      		
+      
+		    });  
+		  
+		}); 
+	  
+	  $(document).ready(function(){  
+		  
+		    $("#formActu\\:rbEfect").click(function() {  
+		    	
+		  	 	 $("#formActu\\:soles").attr('disabled', false);  
+    		
+		    });  
+		  
+		}); 
+	  
+	  
+		function reset () {
+			$("#toggleCSS").attr("href", "alertify/themes/alertify.default.css");
+			alertify.set({
+				
+				labels : {
+					ok     : "Actualizar",
+					cancel : "Cancelar"
+				},
+				delay : 5000,
+				buttonReverse : false,
+				buttonFocus   : "ok"
+			});
+		}
+
+		// ==============================
+		// Standard Dialogs
+		$("#alert").on( 'click', function () {
+			reset();
+			alertify.alert("This is an alert dialog");
+			return false;
+		});
+
+		$("#confirm").on( 'click', function () {
+			reset();
+			$("#toggleCSS").attr("href", "alertify/themes/alertify.bootstrap.css");
+			
+			
+			alertify.confirm("<big><strong > <span>Actualizacion de Pedido de Servicio </span></strong> </big>  <br></br>Su pedido de servicio de actualizara, por favor confirme su actualizacion de pedido <br></br>SERVICE EXPRESS", function (e) {
+				if (e) {
+					
+					$("#formActu\\:btnActualizar").click();
+					
+					alertify.success("Acepto la ACtualizacion");
+				} else {
+					alertify.error("Cancelo la Actualiacion");
+
+					return;
+				}
+			});
+			return false;
+		});
+		
+		
+		$("#cancel").on( 'click', function () {
+			reset();
+			$("#toggleCSS").attr("href", "alertify/themes/alertify.bootstrap.css");
+			
+			
+			alertify.confirm("<big><strong > <span>Cancelar  Pedido de Servicio </span></strong> </big>  <br></br>Su pedido de servicio de cancelara, por favor confirme su cancelacion de pedido <br></br>SERVICE EXPRESS", function (e) {
+				if (e) {
+					
+					$("#formActu\\:btnCancelar").click();
+					
+					alertify.success("Acepto la Cancelacion");
+				} else {
+					alertify.error("Cancelar");
+
+					return;
+				}
+			});
+			return false;
+		});
+
+
+		$("#prompt").on( 'click', function () {
+			reset();
+			alertify.prompt("This is a prompt dialog", function (e, str) {
+				if (e) {
+					alertify.success("You've clicked OK and typed: " + str);
+				} else {
+					alertify.error("You've clicked Cancel");
+				}
+			}, "Default Value");
+			return false;
+		});
+
+		// ==============================
+		// Ajax
+		$("#ajax").on("click", function () {
+			reset();
+			alertify.confirm("Confirm?", function (e) {
+				if (e) {
+					alertify.alert("Successful AJAX after OK");
+				} else {
+					alertify.alert("Successful AJAX after Cancel");
+				}
+			});
+		});
+
+		// ==============================
+		// Standard Dialogs
+		$("#notification").on( 'click', function () {
+			reset();
+			alertify.log("Standard log message");
+			return false;
+		});
+
+		$("#success").on( 'click', function () {
+			reset();
+			alertify.success("Success log message");
+			return false;
+		});
+
+		$("#error").on( 'click', function () {
+			reset();
+			alertify.error("Error log message");
+			return false;
+		});
+
+		// ==============================
+		// Custom Properties
+		$("#delay").on( 'click', function () {
+			reset();
+			alertify.set({ delay: 10000 });
+			alertify.log("Hiding in 10 seconds");
+			return false;
+		});
+
+		$("#forever").on( 'click', function () {
+			reset();
+			alertify.log("Will stay until clicked", "", 0);
+			return false;
+		});
+
+		$("#labels").on( 'click', function () {
+			reset();
+			alertify.set({ labels: { ok: "Accept", cancel: "Deny" } });
+			alertify.confirm("Confirm dialog with custom button labels", function (e) {
+				if (e) {
+					alertify.success("You've clicked OK");
+				} else {
+					alertify.error("You've clicked Cancel");
+				}
+			});
+			return false;
+		});
+
+		$("#focus").on( 'click', function () {
+			reset();
+			alertify.set({ buttonFocus: "cancel" });
+			alertify.confirm("Confirm dialog with cancel button focused", function (e) {
+				if (e) {
+					alertify.success("You've clicked OK");
+				} else {
+					alertify.error("You've clicked Cancel");
+				}
+			});
+			return false;
+		});
+
+		$("#order").on( 'click', function () {
+			reset();
+			alertify.set({ buttonReverse: true });
+			alertify.confirm("Confirm dialog with reversed button order", function (e) {
+				if (e) {
+					alertify.success("You've clicked OK");
+				} else {
+					alertify.error("You've clicked Cancel");
+				}
+			});
+			return false;
+		});
+
+		// ==============================
+		// Custom Log
+		$("#custom").on( 'click', function () {
+			reset();
+			alertify.custom = alertify.extend("custom");
+			alertify.custom("I'm a custom log message");
+			return false;
+		});
+
+		// ==============================
+		// Custom Themes
+		$("#bootstrap").on( 'click', function () {
+			reset();
+			$("#toggleCSS").attr("href", "alertify/themes/alertify.bootstrap.css");
+			alertify.prompt("Prompt dialog with bootstrap theme", function (e) {
+				if (e) {
+					alertify.success("You've clicked OK");
+				} else {
+					alertify.error("You've clicked Cancel");
+				}
+			}, "Default Value");
+			return false;
+		});
+	</script>
+
+	
+	
+
+</h:body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+
+	
+<h:head>
+
+	<!-- Bootstrap -->
+		<link href="diseIndex/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="diseIndex/css/font-awesome.min.css" rel="stylesheet"/>
+		<link href="diseIndex/css/owl.carousel.css" rel="stylesheet"/>
+		<link href="diseIndex/css/owl.theme.css" rel="stylesheet"/>
+		<link href="diseIndex/css/owl.transitions.css" rel="stylesheet"/>
+
+
+
+
+
+
+</h:head>
+<h:body  >
+<f:view>
+
+	
+	
+	<h:outputLabel>asdjba</h:outputLabel>
+	
+	
+	<h:form id="formtema" >
+	
+	
+        
+          <p:selectOneMenu  value="#{cambiadorTemas.tema}" immediate = "true"   editable="true" >
+            <f:selectItems value="#{cambiadorTemas.themes}" />
+          </p:selectOneMenu> 
+          <p:commandButton value="Change" id="btn" action="#{cambiadorTemas.cambiar}" ajax="false">
+          		
+<!--           		<f:setPropertyActionListener value="blitzer" target="#{cambiadorTemas.tema}"/> -->
+          
+          </p:commandButton>
+          
+          
+							    	
+
+</h:form>
+	
+
+</f:view>	
+
+
+
+
+
+
+		<script src="diseIndex/js/bootstrap.min.js"></script>
+		<script src="diseIndex/js/jquery.easing.min.js"></script>
+		<script src="diseIndex/js/jquery.stellar.js"></script>
+		<script src="diseIndex/js/jquery.appear.js"></script>
+		<script src="diseIndex/js/jquery.nicescroll.min.js"></script>
+		<script src="diseIndex/js/jquery.countTo.js"></script>
+		<script src="diseIndex/js/jquery.shuffle.modernizr.js"></script>
+		<script src="diseIndex/js/jquery.shuffle.js"></script>
+		<script src="diseIndex/js/owl.carousel.js"></script>
+		<script src="diseIndex/js/jquery.ajaxchimp.min.js"></script>
+		<script src="diseIndex/js/script.js"></script>
+
+		
+		
+		
+
+<script src="mdCliente/js/material.min.js" type="text/javascript"></script>
+<!--  PerfectScrollbar Library -->
+<script src="mdCliente/js/perfect-scrollbar.jquery.min.js"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="mdCliente/js/material-dashboard.js?v=1.2.0"></script>
+		
+</h:body>
+
+</html>
